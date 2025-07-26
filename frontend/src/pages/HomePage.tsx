@@ -1,11 +1,19 @@
-import PopularDestination from "@/components/Home-components/PopularDestination";
+import { propularDestination } from "@/constansts/utils";
 import HeroComponent from "../components/Home-components/HeroComponent";
+import CarouselComponent from "@/components/Home-components/CarouselComponent";
 
 const HomePage = () => {
   return (
     <div>
       <HeroComponent />
-      <PopularDestination />
+      <CarouselComponent
+        tag="Popular Destinations"
+        data={propularDestination}
+      />
+      <CarouselComponent
+        tag="Popular Departure Ports"
+        data={propularDestination}
+      />
     </div>
   );
 };
