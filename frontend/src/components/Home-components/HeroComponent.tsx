@@ -5,7 +5,7 @@ export default function HeroComponent() {
     <div className="relative w-full">
       <div className="relative w-full h-[55vh]">
         <img
-          src="/new-bg-hero.jpg"
+          src="/hero-bg.jpg"
           alt="Cruise Background"
           className="w-full h-full object-cover"
         />
