@@ -73,3 +73,111 @@ export const propularDestination = [
     price: 1999,
   },
 ];
+
+export const otherPortsData = [
+  {
+    id: 100,
+    name: "Cruises from Anchorage",
+    image:
+      "https://swarajya.gumlet.io/swarajya/2023-08/7572f481-fa87-4020-a320-247b63307c2a/Cruise_160812_135_2.jpg?w=1200&h=675&auto=format%2Ccompress&fit=max&enlarge=true",
+    ports: 112,
+  },
+  {
+    id: 101,
+    name: "Cruises from Auckland",
+    image:
+      "https://swarajya.gumlet.io/swarajya/2023-08/7572f481-fa87-4020-a320-247b63307c2a/Cruise_160812_135_2.jpg?w=1200&h=675&auto=format%2Ccompress&fit=max&enlarge=true",
+    ports: 77,
+  },
+  {
+    id: 102,
+    name: "Cruises from Barcelona",
+    image:
+      "https://swarajya.gumlet.io/swarajya/2023-08/7572f481-fa87-4020-a320-247b63307c2a/Cruise_160812_135_2.jpg?w=1200&h=675&auto=format%2Ccompress&fit=max&enlarge=true",
+    ports: 857,
+  },
+  {
+    id: 103,
+    name: "Cruises from Bayonne",
+    image:
+      "https://swarajya.gumlet.io/swarajya/2023-08/7572f481-fa87-4020-a320-247b63307c2a/Cruise_160812_135_2.jpg?w=1200&h=675&auto=format%2Ccompress&fit=max&enlarge=true",
+    ports: 36,
+  },
+  {
+    id: 104,
+    name: "Cruises from Brisbane",
+    image:
+      "https://swarajya.gumlet.io/swarajya/2023-08/7572f481-fa87-4020-a320-247b63307c2a/Cruise_160812_135_2.jpg?w=1200&h=675&auto=format%2Ccompress&fit=max&enlarge=true",
+    ports: 122,
+  },
+  {
+    id: 105,
+    name: "Cruises from Brisbane",
+    image:
+      "https://swarajya.gumlet.io/swarajya/2023-08/7572f481-fa87-4020-a320-247b63307c2a/Cruise_160812_135_2.jpg?w=1200&h=675&auto=format%2Ccompress&fit=max&enlarge=true",
+    ports: 122,
+  },
+  {
+    id: 106,
+    name: "Cruises from Brisbane",
+    image:
+      "https://swarajya.gumlet.io/swarajya/2023-08/7572f481-fa87-4020-a320-247b63307c2a/Cruise_160812_135_2.jpg?w=1200&h=675&auto=format%2Ccompress&fit=max&enlarge=true",
+    ports: 122,
+  },
+  {
+    id: 107,
+    name: "Cruises from Brisbane",
+    image:
+      "https://swarajya.gumlet.io/swarajya/2023-08/7572f481-fa87-4020-a320-247b63307c2a/Cruise_160812_135_2.jpg?w=1200&h=675&auto=format%2Ccompress&fit=max&enlarge=true",
+    ports: 122,
+  },
+  {
+    id: 108,
+    name: "Cruises from Brisbane",
+    image:
+      "https://swarajya.gumlet.io/swarajya/2023-08/7572f481-fa87-4020-a320-247b63307c2a/Cruise_160812_135_2.jpg?w=1200&h=675&auto=format%2Ccompress&fit=max&enlarge=true",
+    ports: 122,
+  },
+  {
+    id: 109,
+    name: "Cruises from Brisbane",
+    image:
+      "https://swarajya.gumlet.io/swarajya/2023-08/7572f481-fa87-4020-a320-247b63307c2a/Cruise_160812_135_2.jpg?w=1200&h=675&auto=format%2Ccompress&fit=max&enlarge=true",
+    ports: 122,
+  },
+  {
+    id: 110,
+    name: "Cruises from Brisbane",
+    image:
+      "https://swarajya.gumlet.io/swarajya/2023-08/7572f481-fa87-4020-a320-247b63307c2a/Cruise_160812_135_2.jpg?w=1200&h=675&auto=format%2Ccompress&fit=max&enlarge=true",
+    ports: 122,
+  },
+  {
+    id: 111,
+    name: "Cruises from Brisbane",
+    image:
+      "https://swarajya.gumlet.io/swarajya/2023-08/7572f481-fa87-4020-a320-247b63307c2a/Cruise_160812_135_2.jpg?w=1200&h=675&auto=format%2Ccompress&fit=max&enlarge=true",
+    ports: 122,
+  },
+  {
+    id: 112,
+    name: "Cruises from Brisbane",
+    image:
+      "https://swarajya.gumlet.io/swarajya/2023-08/7572f481-fa87-4020-a320-247b63307c2a/Cruise_160812_135_2.jpg?w=1200&h=675&auto=format%2Ccompress&fit=max&enlarge=true",
+    ports: 122,
+  },
+  {
+    id: 113,
+    name: "Cruises from Brisbane",
+    image:
+      "https://swarajya.gumlet.io/swarajya/2023-08/7572f481-fa87-4020-a320-247b63307c2a/Cruise_160812_135_2.jpg?w=1200&h=675&auto=format%2Ccompress&fit=max&enlarge=true",
+    ports: 122,
+  },
+  {
+    id: 114,
+    name: "Cruises from Brisbane",
+    image:
+      "https://swarajya.gumlet.io/swarajya/2023-08/7572f481-fa87-4020-a320-247b63307c2a/Cruise_160812_135_2.jpg?w=1200&h=675&auto=format%2Ccompress&fit=max&enlarge=true",
+    ports: 122,
+  },
+];
