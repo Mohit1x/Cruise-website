@@ -16,8 +16,11 @@ const Header = () => {
               CRUISE APP
             </div>
             <div className="flex items-center gap-10">
-              {navItems.map((nav) => (
-                <h1 className="font-semibold cursor-pointer text-[#00285F]">
+              {navItems.map((nav, index) => (
+                <h1
+                  key={index}
+                  className="font-semibold cursor-pointer text-[#00285F]"
+                >
                   {nav.name}
                 </h1>
               ))}

@@ -7,7 +7,7 @@ const HomePage = () => {
   return (
     <div className="">
       <HeroComponent />
-      <div className="max-w-6xl mx-auto flex flex-col gap-5 py-10">
+      <div className="px-5 md:max-w-6xl mx-auto flex flex-col gap-5 py-10">
         <CarouselComponent
           tag="Popular Destinations"
           data={propularDestination}

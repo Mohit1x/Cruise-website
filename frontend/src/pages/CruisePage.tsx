@@ -14,7 +14,7 @@ import {
 } from "@/components/ui/carousel";
 import { Heart, Share, Star, Calendar } from "lucide-react";
 import { cruisesFromAuckland } from "@/constansts/cruise-data";
-import { Pagination } from "../Pagination";
+import { Pagination } from "@/components/Pagination";
 
 const ITEMS_PER_PAGE = 4;
 

@@ -28,7 +28,7 @@ export default function HeroComponent() {
           Easily compare prices from multiple sites with one click
         </p>
 
-        <div className="mt-10">
+        <div className="mt-10 hidden md:block">
           <FindCruise />
         </div>
       </div>
