@@ -56,7 +56,7 @@ export const CruisePage = () => {
                                 variant="secondary"
                                 className="bg-black/70 text-white hover:bg-black/70"
                               >
-                                {cruise.shipName || "Celebrity Edge"}
+                                {"Celebrity Edge"}
                               </Badge>
                             </div>
                             <div className="absolute top-4 left-4">
