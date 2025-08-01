@@ -1,29 +1,14 @@
 import { IoSearchOutline } from "react-icons/io5";
-import { navItems } from "../constansts/utils";
-import { PromoBar } from "./PromoBar";
 import { CiHeart } from "react-icons/ci";
 
 const Header = () => {
   return (
-    <div className="hidden md:block">
-      <div className="flex flex-col">
-        <div>
-          <PromoBar />
-        </div>
+    <div>
+      <div className="flex flex-col px-2 md:px-0">
         <div className="">
           <div className="flex items-center justify-between h-20 max-w-7xl mx-auto">
             <div className="font-semibold text-blue-500 text-2xl">
-              CRUISE APP
-            </div>
-            <div className="flex items-center gap-10">
-              {navItems.map((nav, index) => (
-                <h1
-                  key={index}
-                  className="font-semibold cursor-pointer text-[#00285F]"
-                >
-                  {nav.name}
-                </h1>
-              ))}
+              CRUISE
             </div>
             <div className="flex items-center gap-5">
               <IoSearchOutline size={24} className="cursor-pointer" />
