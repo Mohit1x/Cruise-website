@@ -1,8 +1,10 @@
-import { IoSearchOutline } from "react-icons/io5";
-import { CiHeart } from "react-icons/ci";
+import { useState } from "react";
+import SpinWheelModal from "./SpinWheelModal";
 
 const Header = () => {
+    const [showModal, setShowModal] = useState(false);
   return (
+  <>
     <div>
       <div className="flex flex-col px-2 md:px-0">
         <div className="">
@@ -10,17 +12,18 @@ const Header = () => {
             <div className="font-semibold text-blue-500 text-2xl">
               CRUISE
             </div>
-            <div className="flex items-center gap-5">
-              <IoSearchOutline size={24} className="cursor-pointer" />
-              <CiHeart size={24} className="cursor-pointer" />
-              <div className="flex items-center bg-[#00285F] hover:bg-blue-900 text-white p-3 font-semibold rounded-full cursor-pointer">
-                Sign In
-              </div>
+            <div className="flex items-center gap-2 md:gap-5">
+            <img src="/spin-icon.png" className="h-8 w-8 md:h-12 md:w-12" onClick={()=>setShowModal(true)}/>
+            <img src="/shield-icon.png" className="h-8 w-8 md:h-12 md:w-12"/>
+            <img src="/message-icon.png" className="h-8 w-8 md:h-12 md:w-12"/>
+            <img src="/avatar-icon.png" className="h-10 w-10 md:h-12 md:w-12"/>
             </div>
           </div>
         </div>
       </div>
     </div>
+      <SpinWheelModal isOpen={showModal} onClose={() => setShowModal(false)} />
+  </>
   );
 };
 
