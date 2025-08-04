@@ -106,10 +106,9 @@ export const AuthPage = () => {
           </DialogContent>
         </Dialog>
       </div>
-      <div className="absolute bottom-1 flex justify-center bg-white p-1 rounded text-blue-600 w-fit">
+      <div className="absolute bottom-1 flex justify-center bg-white p-1 rounded text-blue-600 w-fit" onClick={()=>openModal("register")}>
   <span className="text-blue-600 text-xl cursor-pointer font-semibold">Sign Up</span>
 </div>
-
     </div>
   );
 };
