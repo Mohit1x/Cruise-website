@@ -1,8 +1,8 @@
 import { useState } from "react";
-import SpinWheelModal from "./SpinWheelModal";
+import { SpinWheelModal } from "./SpinWheelModal";
 
 const Header = () => {
-    const [showModal, setShowModal] = useState(false);
+    const [isModalOpen, setIsModalOpen] = useState(false)
   return (
   <>
     <div>
@@ -13,7 +13,7 @@ const Header = () => {
               CRUISE
             </div>
             <div className="flex items-center gap-2 md:gap-5">
-            <img src="/spin-icon.png" className="h-8 w-8 md:h-12 md:w-12" onClick={()=>setShowModal(true)}/>
+            <img src="/spin-icon.png" className="h-8 w-8 md:h-12 md:w-12" onClick={()=>setIsModalOpen(true)}/>
             <img src="/shield-icon.png" className="h-8 w-8 md:h-12 md:w-12"/>
             <img src="/message-icon.png" className="h-8 w-8 md:h-12 md:w-12"/>
             <img src="/avatar-icon.png" className="h-10 w-10 md:h-12 md:w-12"/>
@@ -22,7 +22,7 @@ const Header = () => {
         </div>
       </div>
     </div>
-      <SpinWheelModal isOpen={showModal} onClose={() => setShowModal(false)} />
+      <SpinWheelModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
   </>
   );
 };
