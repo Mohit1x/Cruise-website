@@ -22,9 +22,9 @@ export const OtherPorts = ({ data }: OtherPortsProps) => {
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
-        {visibleData.map((port) => (
+        {visibleData.map((port, index) => (
           <div
-            key={port.name}
+            key={index}
             className="flex items-center gap-3 cursor-pointer hover:underline"
           >
             <div>
