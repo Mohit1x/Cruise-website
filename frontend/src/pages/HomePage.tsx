@@ -9,7 +9,7 @@ const HomePage = () => {
     <div className="">
       <div className="block md:hidden"><HeroComponent /></div>
       <div className="hidden md:block">
-      <NewHeroComponent/>
+      <NewHeroComponent />
 
       </div>
       <div className="px-5 md:max-w-6xl mx-auto flex flex-col gap-5 py-10">
@@ -21,8 +21,6 @@ const HomePage = () => {
           tag="Popular Departure Ports"
           data={propularDestination}
         />
-        <CarouselComponent tag="Popular Ships" data={propularDestination} />
-        <CarouselComponent tag="Cruise by length" data={propularDestination} />
         <OtherPorts data={otherPortsData} />
       </div>
     </div>
