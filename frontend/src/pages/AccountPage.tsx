@@ -18,9 +18,9 @@ import {
   HelpCircle,
   Info,
 } from "lucide-react"
+import { Link } from "react-router"
 
 export default function AccountPage() {
-  const [currentPage, setCurrentPage] = useState(0)
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: false })
   const [selectedIndex, setSelectedIndex] = useState(0)
 
@@ -54,28 +54,26 @@ export default function AccountPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Responsive Container */}
       <div
         className="w-full max-w-7xl mx-auto bg-white shadow-lg min-h-screen 
                       lg:max-w-6xl lg:my-8 lg:rounded-2xl lg:overflow-hidden lg:min-h-[800px]"
       >
-        {/* Header - Responsive */}
+ 
         <div className="flex items-center justify-between p-4 md:p-6 lg:p-8 bg-white border-b">
+         <Link to={"/"}>
           <Button variant="ghost" size="icon" className="h-8 w-8 md:h-10 md:w-10">
-            <ChevronLeft className="h-5 w-5 md:h-6 md:w-6" />
+            <ChevronLeft size={16} className="h-10 w-10 md:h-10 md:w-10" />
           </Button>
+         </Link>
           <h1 className="text-lg md:text-xl lg:text-2xl font-semibold text-gray-900">My Account</h1>
-          <div className="w-8 md:w-10" /> {/* Spacer for centering */}
+          <div className="w-8 md:w-10" /> 
         </div>
 
-        {/* Main Content Layout - Responsive Grid */}
         <div className="lg:grid lg:grid-cols-2 lg:gap-8 lg:p-8">
-          {/* Profile Section with Blue Theme */}
           <div
             className="relative bg-gradient-to-br from-blue-500 to-blue-600 px-6 py-8 text-white
                           md:px-8 md:py-12 lg:rounded-2xl lg:h-fit"
           >
-            {/* Decorative Pattern */}
             <div className="absolute inset-0 opacity-10">
               <div
                 className="absolute top-4 right-4 w-20 h-20 rounded-full border-2 border-white/20 
@@ -91,7 +89,6 @@ export default function AccountPage() {
               ></div>
             </div>
 
-            {/* User Info */}
             <div className="relative z-10 flex items-center space-x-4 mb-6 md:mb-8">
               <Avatar className="h-16 w-16 md:h-20 md:w-20 lg:h-24 lg:w-24 bg-white/20 border-2 border-white/30">
                 <AvatarFallback className="bg-transparent">
@@ -104,7 +101,6 @@ export default function AccountPage() {
               </div>
             </div>
 
-            {/* Increase Assets Button */}
             <Button
               className="w-full bg-black hover:bg-gray-800 text-white font-medium py-3 mb-4 
                                md:py-4 md:text-lg lg:py-5"
@@ -114,7 +110,6 @@ export default function AccountPage() {
               <Plus className="ml-2 h-5 w-5 md:h-6 md:w-6" />
             </Button>
 
-            {/* Action Buttons */}
             <div className="flex space-x-3 md:space-x-4">
               <Button
                 variant="outline"
@@ -133,9 +128,7 @@ export default function AccountPage() {
             </div>
           </div>
 
-          {/* Functions and Logout Section */}
           <div className="flex flex-col lg:justify-between">
-            {/* My Functions Section */}
             <Card
               className="mx-4 -mt-6 relative z-10 shadow-lg 
                              md:mx-6 md:-mt-8 lg:mx-0 lg:mt-0 lg:shadow-xl"
@@ -146,9 +139,8 @@ export default function AccountPage() {
                   <h2 className="text-lg md:text-xl lg:text-2xl font-semibold text-gray-900">My Functions</h2>
                 </div>
 
-                {/* Responsive Function Grid - Desktop shows all items, Mobile uses carousel */}
                 <div className="lg:hidden">
-                  {/* Mobile/Tablet Carousel */}
+                  
                   <div className="overflow-hidden" ref={emblaRef}>
                     <div className="flex">
                       {functionItems.map((page, pageIndex) => (
@@ -172,7 +164,6 @@ export default function AccountPage() {
                     </div>
                   </div>
 
-                  {/* Page Indicators - Mobile/Tablet */}
                   <div className="flex justify-center space-x-2 mt-6 md:mt-8">
                     {functionItems.map((_, index) => (
                       <button
@@ -186,7 +177,6 @@ export default function AccountPage() {
                   </div>
                 </div>
 
-                {/* Desktop Grid - Shows all items */}
                 <div className="hidden lg:block">
                   <div className="grid grid-cols-4 gap-6 xl:gap-8">
                     {[...functionItems[0], ...functionItems[1]].map((item, index) => (
@@ -206,10 +196,9 @@ export default function AccountPage() {
               </CardContent>
             </Card>
 
-            {/* Spacer for bottom button */}
             <div className="flex-1 min-h-[80px] md:min-h-[100px] lg:min-h-[60px]"></div>
 
-            {/* Log Out Button */}
+            <Link to={"/auth"}>
             <div className="p-4 md:p-6 lg:p-0">
               <Button
                 variant="destructive"
@@ -220,6 +209,7 @@ export default function AccountPage() {
                 Log out
               </Button>
             </div>
+            </Link>
           </div>
         </div>
       </div>

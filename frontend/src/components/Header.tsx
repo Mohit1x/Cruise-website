@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { SpinWheelModal } from "./SpinWheelModal";
+import { Link } from "react-router";
 
 const Header = () => {
     const [isModalOpen, setIsModalOpen] = useState(false)
@@ -16,7 +17,7 @@ const Header = () => {
             <img src="/spin-icon.png" className="h-8 w-8 md:h-12 md:w-12" onClick={()=>setIsModalOpen(true)}/>
             <img src="/shield-icon.png" className="h-8 w-8 md:h-12 md:w-12"/>
             <img src="/message-icon.png" className="h-8 w-8 md:h-12 md:w-12"/>
-            <img src="/avatar-icon.png" className="h-10 w-10 md:h-12 md:w-12"/>
+            <Link to={"/account"}><img src="/avatar-icon.png" className="h-10 w-10 md:h-12 md:w-12"/></Link>
             </div>
           </div>
         </div>
