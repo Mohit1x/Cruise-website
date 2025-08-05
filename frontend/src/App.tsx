@@ -3,6 +3,7 @@ import HomePage from "./pages/HomePage";
 import Layout from "./components/Layout";
 import { CruisePage } from "./pages/CruisePage";
 import { AuthPage } from "./pages/AuthPages";
+import AccountPage from "./pages/AccountPage";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
             <Route path="/" element={<HomePage />} />
             <Route path="/find-a-cruise/:id" element={<CruisePage />} />
           </Route>
+            <Route path="/account" element={<AccountPage />} />
         </Routes>
       </div>
     </Router>
