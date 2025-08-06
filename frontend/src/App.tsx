@@ -4,6 +4,7 @@ import Layout from "./components/Layout";
 import { CruisePage } from "./pages/CruisePage";
 import { AuthPage } from "./pages/AuthPages";
 import AccountPage from "./pages/AccountPage";
+import GoOnTrip from "./pages/GoOnTrip";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
           <Route element={<Layout />}>
             <Route path="/" element={<HomePage />} />
             <Route path="/find-a-cruise/:id" element={<CruisePage />} />
+            <Route path="/go-to-a-trip" element={<GoOnTrip />} />
           </Route>
             <Route path="/account" element={<AccountPage />} />
         </Routes>
