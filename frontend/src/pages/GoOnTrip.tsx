@@ -1,7 +1,9 @@
+import TravelComponent from "@/components/go-on-trip-components/TravelComponent"
+
 const GoOnTrip = ()=>{
     return(
         <div>
-            GoOnTrip
+            <TravelComponent/>
         </div>
     )
 }

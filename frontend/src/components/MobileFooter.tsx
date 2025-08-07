@@ -1,5 +1,5 @@
 import { AiFillHome } from "react-icons/ai";
-import { GiSailboat } from "react-icons/gi";
+import { FaShip  } from "react-icons/fa";
 import { Link, useLocation } from "react-router";
 
 export const MobileFooter = () => {
@@ -25,7 +25,7 @@ export const MobileFooter = () => {
             location.pathname === "/go-to-a-trip" ? "text-black" : "text-gray-400"
           }`}
         >
-          <GiSailboat size={24} />
+          <FaShip  size={24} />
           <span>Go on a trip</span>
         </div>
         </Link>
