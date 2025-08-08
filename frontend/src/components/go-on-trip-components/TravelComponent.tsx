@@ -15,11 +15,11 @@ export default function TravelComponent() {
   }
 
   return (
-    <div className="min-h-screen bg-white flex flex-col px-4 py-2">
+    <div className="bg-white flex flex-col px-4 py-2">
       <div className="w-full max-w-md mx-auto text-center md:max-w-lg lg:max-w-xl">
         <div className="">
-          <h1 className="text-2xl md:text-3xl font-bold text-red-500 tracking-wide">
-            Airpaz
+          <h1 className="text-2xl md:text-3xl font-bold text-blue-500 tracking-wide">
+            Cruise
           </h1>
         </div>
 
