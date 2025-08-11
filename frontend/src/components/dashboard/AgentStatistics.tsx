@@ -113,7 +113,6 @@ export default function AgentStatistics() {
           ))}
         </div>
 
-        {/* Desktop Table View */}
         <div className="hidden sm:block overflow-x-auto">
           <Table>
             <TableHeader>
