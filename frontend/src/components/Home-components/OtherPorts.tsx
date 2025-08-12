@@ -16,7 +16,7 @@ export const OtherPorts = ({ data }: OtherPortsProps) => {
   const visibleData = showAll ? data : data.slice(0, 8);
 
   return (
-    <div className="flex flex-col gap-5">
+    <div className="flex flex-col gap-5 hidden md:block">
       <div className="text-2xl font-bold">
         <h1>Other Departure Ports</h1>
       </div>
