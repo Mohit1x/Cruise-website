@@ -155,13 +155,18 @@ export function SidebarMenuButton({ children, asChild, className }: SidebarMenuB
   const { isOpen, isMobile } = useSidebar()
   
   if (asChild) {
-    return React.cloneElement(children as React.ReactElement, {
-      className: cn(
-        "flex items-center w-full px-2 sm:px-3 py-2 text-sm font-medium text-gray-700 rounded-md hover:bg-gray-100 hover:text-gray-900 transition-colors",
-        (!isOpen && !isMobile) && "justify-center px-2",
-        className
-      )
-    })
+    return React.cloneElement(
+      children as React.ReactElement<
+        React.HTMLAttributes<HTMLElement>
+      >,
+      {
+        className: cn(
+          "flex items-center w-full px-2 sm:px-3 py-2 text-sm font-medium text-gray-700 rounded-md hover:bg-gray-100 hover:text-gray-900 transition-colors",
+          (!isOpen && !isMobile) && "justify-center px-2",
+          className
+        ),
+      }
+    );
   }
   
   return (

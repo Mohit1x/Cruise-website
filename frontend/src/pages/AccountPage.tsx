@@ -26,16 +26,19 @@ export default function AccountPage() {
 
   useEffect(() => {
     if (!emblaApi) return
-
+  
     const onSelect = () => {
       setSelectedIndex(emblaApi.selectedScrollSnap())
     }
-
+  
     emblaApi.on("select", onSelect)
     onSelect()
-
-    return () => emblaApi.off("select", onSelect)
+  
+    return () => {
+      emblaApi.off("select", onSelect) // now returns void explicitly
+    }
   }, [emblaApi])
+  
 
   const functionItems = [
     [

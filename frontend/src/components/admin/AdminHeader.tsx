@@ -9,11 +9,11 @@ import {
 } from '@/components/ui/dropdown-menu'
 import { SidebarTrigger } from '@/components/ui/custom-sidebar'
 
-interface HeaderProps {
-  activeTab?: string
-}
+// interface HeaderProps {
+//   activeTab?: string
+// }
 
-export default function AdminHeader({ activeTab }: HeaderProps) {
+export default function AdminHeader() {
   const location = useLocation();
   const currentPath = location.pathname;
 

@@ -124,7 +124,7 @@ const membershipData = [
 ]
 
 export default function MembershipLevel() {
-  const [searchTerm, setSearchTerm] = useState("")
+  // const [searchTerm, setSearchTerm] = useState("")
   const [pageSize, setPageSize] = useState("20")
   const [isEditDialogOpen, setIsEditDialogOpen] = useState(false)
   const [selectedMembershipLevel, setSelectedMembershipLevel] = useState<(typeof membershipData)[0] | null>(null)

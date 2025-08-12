@@ -99,7 +99,11 @@ export const CruisePage = () => {
                     <div className="space-y-2">
                       <p className="text-gray-600">
                         <span className="font-medium">Leaving from:</span>{" "}
-                        {id?.charAt(0).toUpperCase() + id?.slice(1)}
+                        {id
+                          ? id.charAt(0).toUpperCase() + id.slice(1)
+                          : ""
+                        }
+
                         <span className="text-blue-600 font-medium ml-1">
                           +7 ports
                         </span>
