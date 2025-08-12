@@ -89,7 +89,7 @@ export default function AppSidebar() {
   const menuItems = getSidebarMenuItems(currentPath)
 
   return (
-    <Sidebar className={isMobile ? "" : "h-[calc(100vh-73px)]"}>
+    <Sidebar className={`${currentPath == "/admin/dashboard" ? "hidden":"block"} ${isMobile ? "" : `h-[calc(100vh-73px)]`}`}>
       <SidebarContent>
         <SidebarGroup>
           <SidebarGroupContent>

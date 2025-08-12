@@ -43,7 +43,7 @@ export default function AdminHeader() {
               }`}
               asChild
             >
-              <Link to="/admin/membership-management">👥 Membership Management</Link>
+              <Link to="/admin/membership-management/member-list">👥 Membership Management</Link>
             </Button>
             <Button variant="ghost" className="text-white hover:bg-slate-700 text-xs xl:text-sm px-2 xl:px-4" asChild>
               <Link to="/admin/trade">📊 Trade</Link>
@@ -67,7 +67,7 @@ export default function AdminHeader() {
                 <Link to="/admin/dashboard">Backstage Homepage</Link>
               </DropdownMenuItem>
               <DropdownMenuItem asChild>
-                <Link to="/admin/membership-management">👥 Membership Management</Link>
+                <Link to="/admin/membership-management/member-list">👥 Membership Management</Link>
               </DropdownMenuItem>
               <DropdownMenuItem asChild>
                 <Link to="/admin/trade">📊 Trade</Link>
