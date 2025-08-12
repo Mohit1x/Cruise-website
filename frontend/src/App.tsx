@@ -8,6 +8,8 @@ import AccountPage from "./pages/AccountPage";
 import GoOnTrip from "./pages/GoOnTrip";
 // import MembershipLevel from "./pages/MembershipLevel";\
 import Dashboard from "./pages/admin-pages/Dashboard";
+import MemberList from "./pages/admin-pages/membership-management/member-list";
+import MembershipLevel from "./pages/admin-pages/membership-management/membership-level";
 
 function App() {
   return (
@@ -26,8 +28,8 @@ function App() {
           <Route path="/admin" element={<AdminLayout />}>
             <Route path="dashboard" element={<Dashboard />} />
             <Route path="membership-management" element={<Outlet />}>
-              <Route path="member-list" element={<div>Member List Page Placeholder</div>} />
-              {/* <Route path="membership-level" element={<MembershipLevel />} /> */}
+              <Route path="member-list" element={<MemberList/>} />
+              <Route path="membership-level" element={<MembershipLevel />} />
             </Route>
             <Route path="trade" element={<div>Trade Page Placeholder</div>} />
             <Route path="help-center" element={<div>Help Center Page Placeholder</div>} />

@@ -26,11 +26,11 @@ function MenuItem({ item, level = 0 }: { item: MenuItem; level?: number }) {
   const location = useLocation()
   const currentPath = location.pathname
 
-  // Determine if the current item or any of its children are active
+
   const isActive =
     item.url === currentPath || (item.children && item.children.some((child) => currentPath.startsWith(child.url)))
 
-  // Initialize isExpanded based on whether any child is active
+  
   const [isExpanded, setIsExpanded] = useState(isActive)
 
   const { isOpen, isMobile } = useSidebar()
@@ -48,11 +48,11 @@ function MenuItem({ item, level = 0 }: { item: MenuItem; level?: number }) {
                 ? "bg-teal-600 text-white hover:bg-teal-700"
                 : (hasChildren && isExpanded)
                   ? "bg-gray-100 text-gray-900"
-                  : "" // Highlight parent if expanded
+                  : ""
             } ${level > 0 ? "pl-8" : ""}`}
             onClick={(e) => {
               if (hasChildren) {
-                e.preventDefault() // Prevent navigation for parent items with children
+                e.preventDefault() 
                 setIsExpanded(!isExpanded)
               }
             }}

@@ -160,10 +160,83 @@ import {
       url: "/admin/system-management",
     },
   ]
+
+  export const helpCenterMenuItems: MenuItem[]=[
+    {
+        title: "Homepage Text",
+        icon: Users,
+        url: "/admin/help-center",
+        children: [
+          {
+            title: "Announcement Management",
+            icon: UserCheck,
+            url: "/admin/help-center/announcement-management",
+          },
+          {
+            title: "Homepage Carousel",
+            icon: Crown,
+            url: "/admin/help-center/homepage-carousel",
+          },
+          {
+            title: "Rule Text",
+            icon: Layers,
+            url: "/admin/help-center/rule-text",
+          },
+        ],
+      },
+  ]
+
+  export const systemManagementsMenuItems: MenuItem[] = [
+    {
+      title: "System Configuration",
+      icon: Users,
+      url: "/admin/system-management",
+      children: [
+        {
+          title: "System parameter configuration",
+          icon: UserCheck,
+          url: "/admin/system-management/system-parameter",
+        },
+        {
+          title: "System menu management",
+          icon: Crown,
+          url: "/admin/system-management/system-menu",
+        },
+        {
+          title: "System operation log",
+          icon: Layers,
+          url: "/admin/system-management/system-operation-log",
+        },
+      ],
+    },
+    {
+      title: "Permission Management",
+      icon: UserCog,
+      url: "",
+      children: [
+        {
+          title: "Access rights management",
+          icon: List,
+          url: "/admin/system-management/access-right",
+        },
+        {
+          title: "System user management",
+          icon: List,
+          url: "/admin/system-management/system-user",
+        },
+      ],
+    },
+  ]
   
   export function getSidebarMenuItems(pathname: string): MenuItem[] {
     if (pathname.startsWith("/admin/trade")) {
       return tradeMenuItems
+    }
+    if (pathname.startsWith("/admin/help-center")) {
+      return helpCenterMenuItems
+    }
+    if (pathname.startsWith("/admin/system-management")) {
+      return systemManagementsMenuItems
     }
     if (
       pathname.startsWith("/admin/membership-management") ||
@@ -172,7 +245,6 @@ import {
     ) {
       return membershipMenuItems
     }
-    // Default for Dashboard, Help Center, System Management, etc.
     return defaultAdminMenuItems
   }
   

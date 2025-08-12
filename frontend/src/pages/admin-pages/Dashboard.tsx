@@ -1,5 +1,5 @@
-import StatisticsGrid from '@/components/dashboard/StatisticsGrid'
-import AgentStatistics from '@/components/dashboard/AgentStatistics'
+import StatisticsGrid from '@/components/admin/dashboard/StatisticsGrid'
+import AgentStatistics from '@/components/admin/dashboard/AgentStatistics'
 
 export default function Dashboard() {
   return (
