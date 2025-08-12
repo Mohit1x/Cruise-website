@@ -120,7 +120,7 @@ import {
         {
           title: "Proxy List",
           icon: List,
-          url: "/admin/agent-management/proxy-list",
+          url: "/admin/membership-management/proxy-list",
         },
       ],
     },
@@ -132,7 +132,7 @@ import {
         {
           title: "Customer Service...",
           icon: Headphones,
-          url: "/admin/customer-service/1",
+          url: "/admin/membership-management/customer-service-list",
         },
         {
           title: "Customer Service...",

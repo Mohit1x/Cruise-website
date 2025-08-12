@@ -90,7 +90,7 @@ const membershipData = [
     number2: 100,
     minimumWithdraw: "500.00",
     maximumWithdraw: "100000000.00",
-    invitePermission: "Not allowed",
+    invitePermission: "allow",
     status: "active",
   },
   {

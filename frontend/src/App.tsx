@@ -10,6 +10,8 @@ import GoOnTrip from "./pages/GoOnTrip";
 import Dashboard from "./pages/admin-pages/Dashboard";
 import MemberList from "./pages/admin-pages/membership-management/member-list";
 import MembershipLevel from "./pages/admin-pages/membership-management/membership-level";
+import ProxyList from "./pages/admin-pages/membership-management/proxy-list";
+import CustomerServiceList from "./pages/admin-pages/membership-management/customer-service-list";
 
 function App() {
   return (
@@ -30,11 +32,12 @@ function App() {
             <Route path="membership-management" element={<Outlet />}>
               <Route path="member-list" element={<MemberList/>} />
               <Route path="membership-level" element={<MembershipLevel />} />
+            <Route path="proxy-list" element={<ProxyList />} />
+            <Route path="customer-service-list" element={<CustomerServiceList />} />
             </Route>
             <Route path="trade" element={<div>Trade Page Placeholder</div>} />
             <Route path="help-center" element={<div>Help Center Page Placeholder</div>} />
             <Route path="system-management" element={<div>System Management Page Placeholder</div>} />
-            <Route path="agent-management/proxy-list" element={<div>Proxy List Page Placeholder</div>} />
             <Route path="customer-service/1" element={<div>Customer Service 1 Page Placeholder</div>} />
             <Route path="customer-service/2" element={<div>Customer Service 2 Page Placeholder</div>} />
           </Route>
