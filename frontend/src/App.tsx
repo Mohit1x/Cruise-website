@@ -12,6 +12,7 @@ import MemberList from "./pages/admin-pages/membership-management/member-list";
 import MembershipLevel from "./pages/admin-pages/membership-management/membership-level";
 import ProxyList from "./pages/admin-pages/membership-management/proxy-list";
 import CustomerServiceList from "./pages/admin-pages/membership-management/customer-service-list";
+import AccountHistory from "./components/account/AccountHistory";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
             <Route path="/go-to-a-trip" element={<GoOnTrip />} />
             <Route path="/account" element={<AccountPage />} />
           </Route>
+          <Route path="/account/details" element={<AccountHistory/>}/>
 
       {/* admin Pages*/}
           <Route path="/admin" element={<AdminLayout />}>

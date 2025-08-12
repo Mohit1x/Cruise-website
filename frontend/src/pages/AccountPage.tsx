@@ -35,23 +35,22 @@ export default function AccountPage() {
     onSelect()
   
     return () => {
-      emblaApi.off("select", onSelect) // now returns void explicitly
+      emblaApi.off("select", onSelect)
     }
   }, [emblaApi])
   
 
   const functionItems = [
     [
-      { icon: FileText, label: "Details" },
-      { icon: Globe, label: "Language" },
-      { icon: TrendingUp, label: "Level" },
-      { icon: Users, label: "Team" },
+      { icon: FileText, label: "Details",click:"details" },
+      { icon: Globe, label: "Language" ,click:""},
+      { icon: TrendingUp, label: "Level" ,click:""},
+      { icon: Users, label: "Team" ,click:""},
     ],
     [
-      { icon: Users, label: "Team" },
-      { icon: Lock, label: "Password" },
-      { icon: HelpCircle, label: "Help" },
-      { icon: Info, label: "About us" },
+      { icon: Lock, label: "Password",click:"" },
+      { icon: HelpCircle, label: "Help" ,click:""},
+      { icon: Info, label: "About us",click:"" },
     ],
   ]
 
@@ -150,8 +149,9 @@ export default function AccountPage() {
                         <div key={pageIndex} className="flex-[0_0_100%] min-w-0">
                           <div className="grid grid-cols-4 gap-4 px-2 md:gap-6">
                             {page.map((item, index) => (
+                              <Link to={`/account/${item.click}`}  key={index}>
                               <button
-                                key={index}
+                               
                                 className="flex flex-col items-center space-y-2 p-3 rounded-lg hover:bg-gray-50 transition-colors
                                            md:p-4 md:space-y-3"
                               >
@@ -160,6 +160,7 @@ export default function AccountPage() {
                                 </div>
                                 <span className="text-xs md:text-sm text-gray-700 font-medium">{item.label}</span>
                               </button>
+                              </Link>
                             ))}
                           </div>
                         </div>
@@ -183,8 +184,8 @@ export default function AccountPage() {
                 <div className="hidden lg:block">
                   <div className="grid grid-cols-4 gap-6 xl:gap-8">
                     {[...functionItems[0], ...functionItems[1]].map((item, index) => (
+                      <Link to={`/account/details`} key={index}>
                       <button
-                        key={index}
                         className="flex flex-col items-center space-y-3 p-4 rounded-lg hover:bg-gray-50 transition-colors
                                    xl:p-6 xl:space-y-4"
                       >
@@ -193,6 +194,7 @@ export default function AccountPage() {
                         </div>
                         <span className="text-sm xl:text-base text-gray-700 font-medium">{item.label}</span>
                       </button>
+                      </Link>
                     ))}
                   </div>
                 </div>

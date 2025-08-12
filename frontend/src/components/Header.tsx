@@ -1,12 +1,16 @@
 import { useState } from "react";
 import { SpinWheelModal } from "./SpinWheelModal";
-import { Link } from "react-router";
+import { Link, useLocation } from "react-router";
 
 const Header = () => {
     const [isModalOpen, setIsModalOpen] = useState(false)
+
+    const location = useLocation();
+    const currentLocation = location.pathname
+
   return (
   <>
-    <div>
+    <div className={`${currentLocation == "/account" ? 'hidden':'block'}`}>
       <div className="flex flex-col px-2 md:px-0">
         <div className="">
           <div className="flex items-center justify-between h-20 max-w-7xl mx-auto">
