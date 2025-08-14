@@ -1,3 +1,5 @@
+import { Handshake, Headset, Percent,  Ship } from "lucide-react";
+
 export const navItems = [
   { name: "Find a Cruise" },
   { name: "Deals" },
@@ -151,5 +153,28 @@ export const otherPortsData = [
     image:
       "https://swarajya.gumlet.io/swarajya/2023-08/7572f481-fa87-4020-a320-247b63307c2a/Cruise_160812_135_2.jpg?w=1200&h=675&auto=format%2Ccompress&fit=max&enlarge=true",
     ports: 122,
+  },
+];
+
+export const features = [
+  {
+    icon: Ship, 
+    title: "Memorable Cruise Journeys",
+    description: "Sail across the seas with countless luxury cruises and world-class accommodations.",
+  },
+  {
+    icon: Headset,
+    title: "24/7 Guest Assistance",
+    description: "Our dedicated crew is ready to help anytime, speaking your local language.",
+  },
+  {
+    icon: Handshake, 
+    title: "Trusted Partnerships",
+    description: "Working with reliable cruise partners to serve travelers since 2011.",
+  },
+  {
+    icon: Percent,
+    title: "Exclusive Cruise Offers",
+    description: "Enjoy daily deals and competitive prices tailored for every traveler.",
   },
 ];

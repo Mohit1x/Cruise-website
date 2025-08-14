@@ -13,12 +13,12 @@ import MembershipLevel from "./pages/admin-pages/membership-management/membershi
 import ProxyList from "./pages/admin-pages/membership-management/proxy-list";
 import CustomerServiceList from "./pages/admin-pages/membership-management/customer-service-list";
 import AccountHistory from "./components/account/AccountHistory";
+import VipLevelPage from "./components/account/VipLevelPage";
 
 function App() {
   return (
       <Router>
         <Routes>
-    {/* main website pages*/}
           <Route path="/auth" element={<AuthPage />} />
           <Route element={<Layout />}>
             <Route path="/" element={<HomePage />} />
@@ -27,8 +27,8 @@ function App() {
             <Route path="/account" element={<AccountPage />} />
           </Route>
           <Route path="/account/details" element={<AccountHistory/>}/>
+          <Route path="/account/vip-level" element={<VipLevelPage/>}/>
 
-      {/* admin Pages*/}
           <Route path="/admin" element={<AdminLayout />}>
             <Route path="dashboard" element={<Dashboard />} />
             <Route path="membership-management" element={<Outlet />}>

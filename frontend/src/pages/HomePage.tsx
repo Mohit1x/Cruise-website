@@ -3,6 +3,7 @@ import HeroComponent from "../components/Home-components/HeroComponent";
 import CarouselComponent from "@/components/Home-components/CarouselComponent";
 import { OtherPorts } from "@/components/Home-components/OtherPorts";
 import { NewHeroComponent } from "@/components/Home-components/NewHeroComponent";
+import FeaturesSection from "@/components/Home-components/FeaturedComponent";
 
 const HomePage = () => {
   return (
@@ -17,6 +18,7 @@ const HomePage = () => {
 
       </div>
       <div className="px-5 md:max-w-6xl mx-auto flex flex-col gap-5 py-10">
+      <FeaturesSection/>
         <CarouselComponent
           tag="Popular Destinations"
           data={propularDestination}
