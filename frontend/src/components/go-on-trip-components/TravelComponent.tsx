@@ -17,14 +17,12 @@ export default function TravelComponent() {
   return (
     <div className="bg-white flex flex-col px-4 py-2">
       <div className="w-full max-w-md mx-auto text-center md:max-w-lg lg:max-w-xl">
-        <div className="">
-          <h1 className="text-2xl md:text-3xl font-bold text-blue-500 tracking-wide">
-            Cruise
-          </h1>
+        <div className="flex items-center justify-center">
+         <img src="/logo.png" className="w-20"/>
         </div>
 
         <div className="space-y-3">
-          <h2 className="text-xl md:text-2xl lg:text-3xl font-bold text-gray-900 leading-tight">
+          <h2 className="text-xl md:text-2xl lg:text-3xl font-bold text-gray-900 leading-tight text-gray-700">
             Start Traveling Now
           </h2>
           <p className="text-sm md:text-base text-gray-600 leading-relaxed px-2">
