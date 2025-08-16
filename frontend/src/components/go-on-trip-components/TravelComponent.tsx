@@ -50,11 +50,11 @@ export default function TravelComponent() {
         </div>
 
         <div className="pt-8 pb-4">
-          <div className="relative w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 mx-auto">
+          <div className="relative w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 mx-auto rounded-full">
             <img 
-              src="globe.gif"
+              src="giphy.gif"
               alt="Rotating globe with airplane"
-              className="w-full h-full object-contain"
+              className="w-full h-full object-contain rounded-full"
             />
           </div>
         </div>
