@@ -2,7 +2,7 @@ import { otherPortsData, propularDestination } from "@/constansts/utils";
 import HeroComponent from "../components/Home-components/HeroComponent";
 import CarouselComponent from "@/components/Home-components/CarouselComponent";
 import { OtherPorts } from "@/components/Home-components/OtherPorts";
-import { NewHeroComponent } from "@/components/Home-components/NewHeroComponent";
+import { MobileHero } from "@/components/Home-components/MobileHero";
 import FeaturesSection from "@/components/Home-components/FeaturedComponent";
 
 const HomePage = () => {
@@ -14,7 +14,7 @@ const HomePage = () => {
       </div>
       <div className="block md:hidden"><HeroComponent /></div>
       <div className="hidden md:block">
-      <NewHeroComponent />
+      <MobileHero />
 
       </div>
       <div className="px-5 md:max-w-6xl mx-auto flex flex-col gap-5 py-10">
