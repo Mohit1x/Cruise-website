@@ -13,7 +13,7 @@ export const Footer = () => {
 
       <div className="max-w-7xl mx-auto px-4 py-8 flex flex-col md:flex-row justify-between gap-10">
         <div className="flex flex-col gap-5">
-          <img src="/logo.svg" alt="Cruise Critic Logo" className="h-8" />
+          <img src="/logo.png" alt="Cruise Critic Logo" className="w-40" />
           <p className="text-gray-600 text-sm">a Tripadvisor company</p>
 
           <div className="flex flex-wrap gap-4 mt-4 text-[13px] text-[#1c1c1c] font-medium">
@@ -25,10 +25,6 @@ export const Footer = () => {
             <a href="#">Accessibility statement</a>
             <a href="#">Cookie Consent</a>
           </div>
-
-          <p className="text-xs text-gray-600 mt-2">
-            © 1995—2025, The Independent Traveler, Inc.
-          </p>
         </div>
 
         <div className="flex flex-col gap-4 max-w-md w-full">

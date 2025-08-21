@@ -170,7 +170,7 @@ export const features = [
   {
     icon: Handshake, 
     title: "Trusted Partnerships",
-    description: "Working with reliable cruise partners to serve travelers since 2011.",
+    description: "Working with reliable cruise partners to serve travelers.",
   },
   {
     icon: Percent,
