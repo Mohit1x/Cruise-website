@@ -1,0 +1,17 @@
+package com.crusie.backend.exceptions;
+
+import com.crusie.backend.helper.ResponseBuilder;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.web.bind.annotation.RestControllerAdvice;
+
+@Slf4j
+@RestControllerAdvice
+@RequiredArgsConstructor
+public class GlobalExceptionHandler {
+
+    private ResponseBuilder responseBuilder;
+
+
+
+}
