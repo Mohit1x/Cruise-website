@@ -99,7 +99,7 @@ export default function StatisticsGrid() {
           <CardContent className="p-3 sm:p-4 h-full">
             <div className="flex items-start justify-between h-full">
               {/* Left Section */}
-              <div className="flex-2 min-w-0 flex flex-col gap-3 pl-2">
+              <div className="h-full flex-2 justify-around min-w-0 flex flex-col  pl-2">
                 <h3 className="text-gray-500 text-xs sm:text-sm font-medium opacity-90 leading-tight">
                   {stat.title}
                 </h3>

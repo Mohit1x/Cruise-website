@@ -78,8 +78,8 @@ export function Sidebar({ children, className }: SidebarProps) {
         "bg-white border-r border-gray-200 transition-all duration-300 relative",
         isMobile 
           ? isOpen 
-            ? "fixed left-0 top-[73px] h-[calc(100vh-73px)] w-64 shadow-lg" 
-            : "fixed left-0 top-[73px] h-[calc(100vh-73px)] w-0 overflow-hidden"
+            ? " w-64 " 
+            : " w-0 "
           : isOpen 
             ? "w-64" 
             : "w-16",
@@ -93,7 +93,7 @@ export function Sidebar({ children, className }: SidebarProps) {
 
 export function SidebarContent({ children, className }: SidebarProps) {
   return (
-    <div className={cn("p-2 sm:p-4", className)}>
+    <div className={cn("p-0 sm:p-0", className)}>
       {children}
     </div>
   )

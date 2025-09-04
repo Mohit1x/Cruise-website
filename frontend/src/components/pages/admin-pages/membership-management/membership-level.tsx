@@ -1,11 +1,26 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Badge } from "@/components/ui/badge"
-import { EditMembershipLevelDialog } from "@/components/admin/member-management/edit-membership-level-dialog"
+import { useState } from "react";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { Badge } from "@/components/ui/badge";
+import { EditMembershipLevelDialog } from "@/components/admin/member-management/edit-membership-level-dialog";
+import DynamicBreadcrumbs from "@/components/DynamicBreadcurmbs";
+import { CustomPagination } from "@/components/CustomPagination";
 
 // Dummy data for membership levels
 const membershipData = [
@@ -121,25 +136,28 @@ const membershipData = [
     invitePermission: "allow",
     status: "active",
   },
-]
+];
 
 export default function MembershipLevel() {
   // const [searchTerm, setSearchTerm] = useState("")
-  const [pageSize, setPageSize] = useState("20")
-  const [isEditDialogOpen, setIsEditDialogOpen] = useState(false)
-  const [selectedMembershipLevel, setSelectedMembershipLevel] = useState<(typeof membershipData)[0] | null>(null)
+  const [pageSize, setPageSize] = useState("20");
+  const [isEditDialogOpen, setIsEditDialogOpen] = useState(false);
+  const [selectedMembershipLevel, setSelectedMembershipLevel] = useState<
+    (typeof membershipData)[0] | null
+  >(null);
 
   const handleEditClick = (member: (typeof membershipData)[0]) => {
-    setSelectedMembershipLevel(member)
-    setIsEditDialogOpen(true)
-  }
+    setSelectedMembershipLevel(member);
+    setIsEditDialogOpen(true);
+  };
 
   return (
     <div className="space-y-4 sm:space-y-6">
-      {/* Breadcrumb - Updated to reflect new path */}
-      <div className="text-xs sm:text-sm text-gray-500">Admin &gt; Membership Management &gt; User Level</div>
-
-      <Card>
+      {/* Breadcrumb */}
+      <div className="pt-4 pl-3">
+        <DynamicBreadcrumbs />
+      </div>
+      <Card className="rounded-none">
         <CardHeader className="pb-3 sm:pb-6">
           <CardTitle className="text-base sm:text-lg">User Level</CardTitle>
         </CardHeader>
@@ -153,8 +171,16 @@ export default function MembershipLevel() {
                     <span className="font-medium text-sm">{member.name}</span>
                     <div className="flex space-x-2">
                       <Badge
-                        variant={member.invitePermission === "allow" ? "default" : "secondary"}
-                        className={member.invitePermission === "allow" ? "bg-blue-500" : "bg-orange-500"}
+                        variant={
+                          member.invitePermission === "allow"
+                            ? "default"
+                            : "secondary"
+                        }
+                        className={
+                          member.invitePermission === "allow"
+                            ? "bg-blue-500"
+                            : "bg-orange-500"
+                        }
                       >
                         {member.invitePermission}
                       </Badge>
@@ -176,7 +202,8 @@ export default function MembershipLevel() {
                         <strong>Commission:</strong> {member.commission}
                       </div>
                       <div>
-                        <strong>Sub Comm:</strong> {member.subordinateCommission}
+                        <strong>Sub Comm:</strong>{" "}
+                        {member.subordinateCommission}
                       </div>
                       <div>
                         <strong>Min Balance:</strong> {member.minimumBalance}
@@ -209,34 +236,76 @@ export default function MembershipLevel() {
                 <TableRow>
                   <TableHead className="text-xs sm:text-sm">ID</TableHead>
                   <TableHead className="text-xs sm:text-sm">name</TableHead>
-                  <TableHead className="text-xs sm:text-sm">Membership...</TableHead>
-                  <TableHead className="text-xs sm:text-sm">Commission...</TableHead>
-                  <TableHead className="text-xs sm:text-sm">Subordinate comm...</TableHead>
-                  <TableHead className="text-xs sm:text-sm">Minimum bal...</TableHead>
-                  <TableHead className="text-xs sm:text-sm">Number...</TableHead>
-                  <TableHead className="text-xs sm:text-sm">Number...</TableHead>
-                  <TableHead className="text-xs sm:text-sm">Minimum w...</TableHead>
-                  <TableHead className="text-xs sm:text-sm">Maximum m...</TableHead>
-                  <TableHead className="text-xs sm:text-sm">Invite perm...</TableHead>
+                  <TableHead className="text-xs sm:text-sm">
+                    Membership...
+                  </TableHead>
+                  <TableHead className="text-xs sm:text-sm">
+                    Commission...
+                  </TableHead>
+                  <TableHead className="text-xs sm:text-sm">
+                    Subordinate comm...
+                  </TableHead>
+                  <TableHead className="text-xs sm:text-sm">
+                    Minimum bal...
+                  </TableHead>
+                  <TableHead className="text-xs sm:text-sm">
+                    Number...
+                  </TableHead>
+                  <TableHead className="text-xs sm:text-sm">
+                    Number...
+                  </TableHead>
+                  <TableHead className="text-xs sm:text-sm">
+                    Minimum w...
+                  </TableHead>
+                  <TableHead className="text-xs sm:text-sm">
+                    Maximum m...
+                  </TableHead>
+                  <TableHead className="text-xs sm:text-sm">
+                    Invite perm...
+                  </TableHead>
                   <TableHead className="text-xs sm:text-sm">operate</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
                 {membershipData.map((member) => (
                   <TableRow key={member.id}>
-                    <TableCell className="text-xs sm:text-sm">{member.id}</TableCell>
-                    <TableCell className="text-xs sm:text-sm font-medium">{member.name}</TableCell>
-                    <TableCell className="text-xs sm:text-sm">{member.membershipFee}</TableCell>
-                    <TableCell className="text-xs sm:text-sm">{member.commission}</TableCell>
-                    <TableCell className="text-xs sm:text-sm">{member.subordinateCommission}</TableCell>
-                    <TableCell className="text-xs sm:text-sm">{member.minimumBalance}</TableCell>
-                    <TableCell className="text-xs sm:text-sm">{member.number1}</TableCell>
-                    <TableCell className="text-xs sm:text-sm">{member.number2}</TableCell>
-                    <TableCell className="text-xs sm:text-sm">{member.minimumWithdraw}</TableCell>
-                    <TableCell className="text-xs sm:text-sm">{member.maximumWithdraw}</TableCell>
+                    <TableCell className="text-xs sm:text-sm">
+                      {member.id}
+                    </TableCell>
+                    <TableCell className="text-xs sm:text-sm font-medium">
+                      {member.name}
+                    </TableCell>
+                    <TableCell className="text-xs sm:text-sm">
+                      {member.membershipFee}
+                    </TableCell>
+                    <TableCell className="text-xs sm:text-sm">
+                      {member.commission}
+                    </TableCell>
+                    <TableCell className="text-xs sm:text-sm">
+                      {member.subordinateCommission}
+                    </TableCell>
+                    <TableCell className="text-xs sm:text-sm">
+                      {member.minimumBalance}
+                    </TableCell>
+                    <TableCell className="text-xs sm:text-sm">
+                      {member.number1}
+                    </TableCell>
+                    <TableCell className="text-xs sm:text-sm">
+                      {member.number2}
+                    </TableCell>
+                    <TableCell className="text-xs sm:text-sm">
+                      {member.minimumWithdraw}
+                    </TableCell>
+                    <TableCell className="text-xs sm:text-sm">
+                      {member.maximumWithdraw}
+                    </TableCell>
                     <TableCell className="text-xs sm:text-sm">
                       <Badge
-                        variant={member.invitePermission === "allow" ? "default" : "secondary"}
+                        variant={
+                          member.invitePermission === "allow"
+                            ? "default"
+                            : "secondary"
+                        }
                         className={`text-xs ${
                           member.invitePermission === "allow"
                             ? "bg-blue-500 hover:bg-blue-600"
@@ -262,21 +331,12 @@ export default function MembershipLevel() {
           </div>
 
           {/* Pagination */}
-          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 p-4 border-t">
-            <div className="flex items-center space-x-2 text-xs sm:text-sm text-gray-600">
-              <span>Total 8 records, displayed per page</span>
-              <Select value={pageSize} onValueChange={setPageSize}>
-                <SelectTrigger className="w-16 h-8">
-                  <SelectValue />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="10">10</SelectItem>
-                  <SelectItem value="20">20</SelectItem>
-                  <SelectItem value="50">50</SelectItem>
-                </SelectContent>
-              </Select>
-              <span>items, total 1 page, currently showing page 1.</span>
-            </div>
+          <div className="flex flex-col sm:flex-row gap-4 p-4 border-t">
+            <CustomPagination
+              totalPages={5}
+              currentPage={1}
+              onPageChange={(page) => console.log("Page changed to:", page)}
+            />
           </div>
         </CardContent>
       </Card>
@@ -287,5 +347,5 @@ export default function MembershipLevel() {
         membershipLevel={selectedMembershipLevel}
       />
     </div>
-  )
+  );
 }

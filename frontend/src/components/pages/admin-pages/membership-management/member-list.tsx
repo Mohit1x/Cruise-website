@@ -1,16 +1,29 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Badge } from "@/components/ui/badge"
-import { Search, Plus, Download } from "lucide-react"
-import { AddMemberDialog } from "./add-member-dialog"
-import DynamicBreadcrumbs from "@/components/DynamicBreadcurmbs"
-import { CustomPagination } from "@/components/CustomPagination"
+import { useState } from "react";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { Badge } from "@/components/ui/badge";
+import { Search, Plus, Download } from "lucide-react";
+import { AddMemberDialog } from "./add-member-dialog";
+import DynamicBreadcrumbs from "@/components/DynamicBreadcurmbs";
+import { CustomPagination } from "@/components/CustomPagination";
 
 // Dummy data for Member List
 const memberData = [
@@ -238,65 +251,68 @@ const memberData = [
       "Bank card information",
     ],
   },
-]
+];
 
 export default function MemberList() {
-  const [firstLevelAgent, setFirstLevelAgent] = useState("all")
-  const [secondaryAgent, setSecondaryAgent] = useState("all")
-  const [level, setLevel] = useState("all")
-  const [overlayGroup, setOverlayGroup] = useState("all")
-  const [stateFilter, setStateFilter] = useState("all")
-  const [onlineStatus, setOnlineStatus] = useState("all")
-  const [sortBy, setSortBy] = useState("default")
-  const [username, setUsername] = useState("")
-  const [phoneNumber, setPhoneNumber] = useState("")
-  const [invitationCode, setInvitationCode] = useState("")
-  const [registrationTime, setRegistrationTime] = useState("") // Date range
-  const [loginIp, setLoginIp] = useState("")
-  const [isAddMemberDialogOpen, setIsAddMemberDialogOpen] = useState(false) // State for dialog
+  const [firstLevelAgent, setFirstLevelAgent] = useState("all");
+  const [secondaryAgent, setSecondaryAgent] = useState("all");
+  const [level, setLevel] = useState("all");
+  const [overlayGroup, setOverlayGroup] = useState("all");
+  const [stateFilter, setStateFilter] = useState("all");
+  const [onlineStatus, setOnlineStatus] = useState("all");
+  const [sortBy, setSortBy] = useState("default");
+  const [username, setUsername] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [invitationCode, setInvitationCode] = useState("");
+  const [registrationTime, setRegistrationTime] = useState(""); // Date range
+  const [loginIp, setLoginIp] = useState("");
+  const [isAddMemberDialogOpen, setIsAddMemberDialogOpen] = useState(false); // State for dialog
 
   const getOnlineStatusBadgeClass = (status: string) => {
-    return status === "Online" ? "bg-green-500 text-white" : "bg-gray-400 text-white"
-  }
+    return status === "Online"
+      ? "bg-green-500 text-white"
+      : "bg-gray-400 text-white";
+  };
 
   const getStateBadgeClass = (state: string) => {
-    return state === "real people" ? "bg-blue-500 text-white" : "bg-red-500 text-white" // Assuming 'real people' is blue, others red
-  }
+    return state === "real people"
+      ? "bg-blue-500 text-white"
+      : "bg-red-500 text-white"; // Assuming 'real people' is blue, others red
+  };
 
   const getOperationBadgeClass = (operation: string) => {
     switch (operation) {
       case "inject":
-        return "bg-green-500 text-white"
+        return "bg-green-500 text-white";
       case "activation":
-        return "bg-blue-500 text-white"
+        return "bg-blue-500 text-white";
       case "Disable":
-        return "bg-red-500 text-white"
+        return "bg-red-500 text-white";
       case "Reset the task load for the day":
-        return "bg-orange-500 text-white"
+        return "bg-orange-500 text-white";
       case "Consecutive Order Settings":
-        return "bg-purple-500 text-white"
+        return "bg-purple-500 text-white";
       case "grade":
-        return "bg-yellow-500 text-white"
+        return "bg-yellow-500 text-white";
       case "Balance":
-        return "bg-indigo-500 text-white"
+        return "bg-indigo-500 text-white";
       case "Investment balance":
-        return "bg-pink-500 text-white"
+        return "bg-pink-500 text-white";
       case "edit":
-        return "bg-teal-500 text-white"
+        return "bg-teal-500 text-white";
       case "Bank card information":
-        return "bg-gray-700 text-white"
+        return "bg-gray-700 text-white";
       default:
-        return "bg-gray-500 text-white"
+        return "bg-gray-500 text-white";
     }
-  }
+  };
 
   return (
     <div className="space-y-4 sm:space-y-6">
       {/* Breadcrumb */}
       <div className="pt-4 pl-3">
-        <DynamicBreadcrumbs/>
+        <DynamicBreadcrumbs />
       </div>
-      
 
       <Card className="rounded-none">
         <CardHeader className="pb-3 sm:pb-6">
@@ -308,18 +324,29 @@ export default function MemberList() {
                 className="h-8 sm:h-9 px-3 sm:px-4 text-xs sm:text-sm"
                 onClick={() => setIsAddMemberDialogOpen(true)} // Open dialog
               >
-                <Plus className="h-3 w-3 sm:h-4 sm:w-4 mr-1 sm:mr-2" /> Add Member
+                <Plus className="h-3 w-3 sm:h-4 sm:w-4 mr-1 sm:mr-2" /> Add
+                Member
               </Button>
-              <Button size="sm" variant="outline" className="h-8 sm:h-9 px-3 sm:px-4 text-xs sm:text-sm bg-transparent">
-                <Download className="h-3 w-3 sm:h-4 sm:w-4 mr-1 sm:mr-2" /> Export
+              <Button
+                size="sm"
+                variant="outline"
+                className="h-8 sm:h-9 px-3 sm:px-4 text-xs sm:text-sm bg-transparent"
+              >
+                <Download className="h-3 w-3 sm:h-4 sm:w-4 mr-1 sm:mr-2" />{" "}
+                Export
               </Button>
             </div>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-4 mt-4">
             <div className="flex items-center space-x-2">
-              <span className="text-xs sm:text-sm whitespace-nowrap">First-level agent</span>
-              <Select value={firstLevelAgent} onValueChange={setFirstLevelAgent}>
+              <span className="text-xs sm:text-sm whitespace-nowrap">
+                First-level agent
+              </span>
+              <Select
+                value={firstLevelAgent}
+                onValueChange={setFirstLevelAgent}
+              >
                 <SelectTrigger className="w-full h-8 sm:h-10 text-xs sm:text-sm">
                   <SelectValue placeholder="全部" />
                 </SelectTrigger>
@@ -331,7 +358,9 @@ export default function MemberList() {
               </Select>
             </div>
             <div className="flex items-center space-x-2">
-              <span className="text-xs sm:text-sm whitespace-nowrap">Secondary Agent</span>
+              <span className="text-xs sm:text-sm whitespace-nowrap">
+                Secondary Agent
+              </span>
               <Select value={secondaryAgent} onValueChange={setSecondaryAgent}>
                 <SelectTrigger className="w-full h-8 sm:h-10 text-xs sm:text-sm">
                   <SelectValue placeholder="全部" />
@@ -344,7 +373,9 @@ export default function MemberList() {
               </Select>
             </div>
             <div className="flex items-center space-x-2">
-              <span className="text-xs sm:text-sm whitespace-nowrap">level</span>
+              <span className="text-xs sm:text-sm whitespace-nowrap">
+                level
+              </span>
               <Select value={level} onValueChange={setLevel}>
                 <SelectTrigger className="w-full h-8 sm:h-10 text-xs sm:text-sm">
                   <SelectValue placeholder="全部等级" />
@@ -357,7 +388,9 @@ export default function MemberList() {
               </Select>
             </div>
             <div className="flex items-center space-x-2">
-              <span className="text-xs sm:text-sm whitespace-nowrap">Overlay Group</span>
+              <span className="text-xs sm:text-sm whitespace-nowrap">
+                Overlay Group
+              </span>
               <Select value={overlayGroup} onValueChange={setOverlayGroup}>
                 <SelectTrigger className="w-full h-8 sm:h-10 text-xs sm:text-sm">
                   <SelectValue placeholder="全部叠加组" />
@@ -370,7 +403,9 @@ export default function MemberList() {
               </Select>
             </div>
             <div className="flex items-center space-x-2">
-              <span className="text-xs sm:text-sm whitespace-nowrap">State</span>
+              <span className="text-xs sm:text-sm whitespace-nowrap">
+                State
+              </span>
               <Select value={stateFilter} onValueChange={setStateFilter}>
                 <SelectTrigger className="w-full h-8 sm:h-10 text-xs sm:text-sm">
                   <SelectValue placeholder="All states" />
@@ -383,7 +418,9 @@ export default function MemberList() {
               </Select>
             </div>
             <div className="flex items-center space-x-2">
-              <span className="text-xs sm:text-sm whitespace-nowrap">Online status</span>
+              <span className="text-xs sm:text-sm whitespace-nowrap">
+                Online status
+              </span>
               <Select value={onlineStatus} onValueChange={setOnlineStatus}>
                 <SelectTrigger className="w-full h-8 sm:h-10 text-xs sm:text-sm">
                   <SelectValue placeholder="All states" />
@@ -396,7 +433,9 @@ export default function MemberList() {
               </Select>
             </div>
             <div className="flex items-center space-x-2">
-              <span className="text-xs sm:text-sm whitespace-nowrap">Sort by</span>
+              <span className="text-xs sm:text-sm whitespace-nowrap">
+                Sort by
+              </span>
               <Select value={sortBy} onValueChange={setSortBy}>
                 <SelectTrigger className="w-full h-8 sm:h-10 text-xs sm:text-sm">
                   <SelectValue placeholder="Default sort" />
@@ -439,7 +478,10 @@ export default function MemberList() {
               onChange={(e) => setLoginIp(e.target.value)}
               className="w-full h-8 sm:h-10 text-xs sm:text-sm"
             />
-            <Button size="sm" className="h-8 sm:h-10 px-2 sm:px-3 w-full sm:w-auto">
+            <Button
+              size="sm"
+              className="h-8 sm:h-10 px-2 sm:px-3 w-full sm:w-auto"
+            >
               <Search className="h-3 w-3 sm:h-4 sm:w-4 mr-2" /> Search
             </Button>
           </div>
@@ -451,12 +493,24 @@ export default function MemberList() {
               <Card key={index} className="p-3">
                 <div className="space-y-2">
                   <div className="flex justify-between items-center">
-                    <span className="font-medium text-sm">UID: {member.uid}</span>
+                    <span className="font-medium text-sm">
+                      UID: {member.uid}
+                    </span>
                     <div className="flex gap-2">
-                      <Badge variant="outline" className={`text-xs ${getOnlineStatusBadgeClass(member.online)}`}>
+                      <Badge
+                        variant="outline"
+                        className={`text-xs ${getOnlineStatusBadgeClass(
+                          member.online
+                        )}`}
+                      >
                         {member.online}
                       </Badge>
-                      <Badge variant="outline" className={`text-xs ${getStateBadgeClass(member.state)}`}>
+                      <Badge
+                        variant="outline"
+                        className={`text-xs ${getStateBadgeClass(
+                          member.state
+                        )}`}
+                      >
                         {member.state}
                       </Badge>
                     </div>
@@ -490,22 +544,27 @@ export default function MemberList() {
                         <strong>Current Order:</strong> {member.currentOrder}
                       </div>
                       <div>
-                        <strong>Total Orders:</strong> {member.totalOrdersPlaced}
+                        <strong>Total Orders:</strong>{" "}
+                        {member.totalOrdersPlaced}
                       </div>
                       <div>
-                        <strong>Balance:</strong> {member.balance.split("\n")[0]}
+                        <strong>Balance:</strong>{" "}
+                        {member.balance.split("\n")[0]}
                       </div>
                       <div>
-                        <strong>Inv. Balance:</strong> {member.balance.split("\n")[1]}
+                        <strong>Inv. Balance:</strong>{" "}
+                        {member.balance.split("\n")[1]}
                       </div>
                       <div>
                         <strong>Commission:</strong> {member.commission}
                       </div>
                       <div>
-                        <strong>Cum. Recharge:</strong> {member.cumulativeRecharge}
+                        <strong>Cum. Recharge:</strong>{" "}
+                        {member.cumulativeRecharge}
                       </div>
                       <div>
-                        <strong>Cum. Withdraw:</strong> {member.cumulativeWithdrawal}
+                        <strong>Cum. Withdraw:</strong>{" "}
+                        {member.cumulativeWithdrawal}
                       </div>
                       <div>
                         <strong>Frozen Amt:</strong> {member.frozenAmount}
@@ -520,7 +579,11 @@ export default function MemberList() {
                   </div>
                   <div className="flex flex-wrap gap-1 mt-2">
                     {member.operations.map((op, opIndex) => (
-                      <Badge key={opIndex} variant="outline" className={`text-xs ${getOperationBadgeClass(op)}`}>
+                      <Badge
+                        key={opIndex}
+                        variant="outline"
+                        className={`text-xs ${getOperationBadgeClass(op)}`}
+                      >
                         {op}
                       </Badge>
                     ))}
@@ -536,22 +599,46 @@ export default function MemberList() {
               <TableHeader>
                 <TableRow>
                   <TableHead className="text-xs sm:text-sm">UID</TableHead>
-                  <TableHead className="text-xs sm:text-sm">Registration time</TableHead>
-                  <TableHead className="text-xs sm:text-sm">Last login time</TableHead>
-                  <TableHead className="text-xs sm:text-sm">First-level agent</TableHead>
-                  <TableHead className="text-xs sm:text-sm">Secondary Agent</TableHead>
+                  <TableHead className="text-xs sm:text-sm">
+                    Registration time
+                  </TableHead>
+                  <TableHead className="text-xs sm:text-sm">
+                    Last login time
+                  </TableHead>
+                  <TableHead className="text-xs sm:text-sm">
+                    First-level agent
+                  </TableHead>
+                  <TableHead className="text-xs sm:text-sm">
+                    Secondary Agent
+                  </TableHead>
                   <TableHead className="text-xs sm:text-sm">Account</TableHead>
                   <TableHead className="text-xs sm:text-sm">username</TableHead>
                   <TableHead className="text-xs sm:text-sm">grade</TableHead>
-                  <TableHead className="text-xs sm:text-sm">Current order</TableHead>
-                  <TableHead className="text-xs sm:text-sm">Total orders placed on the day</TableHead>
+                  <TableHead className="text-xs sm:text-sm">
+                    Current order
+                  </TableHead>
+                  <TableHead className="text-xs sm:text-sm">
+                    Total orders placed on the day
+                  </TableHead>
                   <TableHead className="text-xs sm:text-sm">Balance</TableHead>
-                  <TableHead className="text-xs sm:text-sm">commission</TableHead>
-                  <TableHead className="text-xs sm:text-sm">Cumulative recharge amount</TableHead>
-                  <TableHead className="text-xs sm:text-sm">Cumulative withdrawn amount</TableHead>
-                  <TableHead className="text-xs sm:text-sm">Frozen amount</TableHead>
-                  <TableHead className="text-xs sm:text-sm">Advanced User</TableHead>
-                  <TableHead className="text-xs sm:text-sm">Invitation Code</TableHead>
+                  <TableHead className="text-xs sm:text-sm">
+                    commission
+                  </TableHead>
+                  <TableHead className="text-xs sm:text-sm">
+                    Cumulative recharge amount
+                  </TableHead>
+                  <TableHead className="text-xs sm:text-sm">
+                    Cumulative withdrawn amount
+                  </TableHead>
+                  <TableHead className="text-xs sm:text-sm">
+                    Frozen amount
+                  </TableHead>
+                  <TableHead className="text-xs sm:text-sm">
+                    Advanced User
+                  </TableHead>
+                  <TableHead className="text-xs sm:text-sm">
+                    Invitation Code
+                  </TableHead>
                   <TableHead className="text-xs sm:text-sm">Online</TableHead>
                   <TableHead className="text-xs sm:text-sm">state</TableHead>
                   <TableHead className="text-xs sm:text-sm">operate</TableHead>
@@ -560,37 +647,85 @@ export default function MemberList() {
               <TableBody>
                 {memberData.map((member, index) => (
                   <TableRow key={index}>
-                    <TableCell className="text-xs sm:text-sm">{member.uid}</TableCell>
-                    <TableCell className="text-xs sm:text-sm">{member.registrationTime}</TableCell>
-                    <TableCell className="text-xs sm:text-sm">{member.lastLoginTime}</TableCell>
-                    <TableCell className="text-xs sm:text-sm">{member.firstLevelAgent}</TableCell>
-                    <TableCell className="text-xs sm:text-sm">{member.secondaryAgent}</TableCell>
-                    <TableCell className="text-xs sm:text-sm">{member.account}</TableCell>
-                    <TableCell className="text-xs sm:text-sm">{member.username}</TableCell>
-                    <TableCell className="text-xs sm:text-sm">{member.grade}</TableCell>
-                    <TableCell className="text-xs sm:text-sm">{member.currentOrder}</TableCell>
-                    <TableCell className="text-xs sm:text-sm">{member.totalOrdersPlaced}</TableCell>
-                    <TableCell className="text-xs sm:text-sm whitespace-pre-line">{member.balance}</TableCell>
-                    <TableCell className="text-xs sm:text-sm">{member.commission}</TableCell>
-                    <TableCell className="text-xs sm:text-sm">{member.cumulativeRecharge}</TableCell>
-                    <TableCell className="text-xs sm:text-sm">{member.cumulativeWithdrawal}</TableCell>
-                    <TableCell className="text-xs sm:text-sm">{member.frozenAmount}</TableCell>
-                    <TableCell className="text-xs sm:text-sm">{member.advancedUser}</TableCell>
-                    <TableCell className="text-xs sm:text-sm">{member.invitationCode}</TableCell>
                     <TableCell className="text-xs sm:text-sm">
-                      <Badge variant="outline" className={`text-xs ${getOnlineStatusBadgeClass(member.online)}`}>
+                      {member.uid}
+                    </TableCell>
+                    <TableCell className="text-xs sm:text-sm">
+                      {member.registrationTime}
+                    </TableCell>
+                    <TableCell className="text-xs sm:text-sm">
+                      {member.lastLoginTime}
+                    </TableCell>
+                    <TableCell className="text-xs sm:text-sm">
+                      {member.firstLevelAgent}
+                    </TableCell>
+                    <TableCell className="text-xs sm:text-sm">
+                      {member.secondaryAgent}
+                    </TableCell>
+                    <TableCell className="text-xs sm:text-sm">
+                      {member.account}
+                    </TableCell>
+                    <TableCell className="text-xs sm:text-sm">
+                      {member.username}
+                    </TableCell>
+                    <TableCell className="text-xs sm:text-sm">
+                      {member.grade}
+                    </TableCell>
+                    <TableCell className="text-xs sm:text-sm">
+                      {member.currentOrder}
+                    </TableCell>
+                    <TableCell className="text-xs sm:text-sm">
+                      {member.totalOrdersPlaced}
+                    </TableCell>
+                    <TableCell className="text-xs sm:text-sm whitespace-pre-line">
+                      {member.balance}
+                    </TableCell>
+                    <TableCell className="text-xs sm:text-sm">
+                      {member.commission}
+                    </TableCell>
+                    <TableCell className="text-xs sm:text-sm">
+                      {member.cumulativeRecharge}
+                    </TableCell>
+                    <TableCell className="text-xs sm:text-sm">
+                      {member.cumulativeWithdrawal}
+                    </TableCell>
+                    <TableCell className="text-xs sm:text-sm">
+                      {member.frozenAmount}
+                    </TableCell>
+                    <TableCell className="text-xs sm:text-sm">
+                      {member.advancedUser}
+                    </TableCell>
+                    <TableCell className="text-xs sm:text-sm">
+                      {member.invitationCode}
+                    </TableCell>
+                    <TableCell className="text-xs sm:text-sm">
+                      <Badge
+                        variant="outline"
+                        className={`text-xs ${getOnlineStatusBadgeClass(
+                          member.online
+                        )}`}
+                      >
                         {member.online}
                       </Badge>
                     </TableCell>
                     <TableCell className="text-xs sm:text-sm">
-                      <Badge variant="outline" className={`text-xs ${getStateBadgeClass(member.state)}`}>
+                      <Badge
+                        variant="outline"
+                        className={`text-xs ${getStateBadgeClass(
+                          member.state
+                        )}`}
+                      >
                         {member.state}
                       </Badge>
                     </TableCell>
                     <TableCell className="text-xs sm:text-sm">
                       <div className="flex flex-wrap gap-1">
                         {member.operations.map((op, opIndex) => (
-                          <Badge key={opIndex} variant="outline" className={`text-xs ${getOperationBadgeClass(op)}`}>
+                          <Badge
+                            key={opIndex}
+                            variant="outline"
+                            className={`text-xs ${getOperationBadgeClass(op)}`}
+                          >
                             {op}
                           </Badge>
                         ))}
@@ -604,12 +739,19 @@ export default function MemberList() {
 
           {/* Pagination */}
           <div className="flex flex-col sm:flex-row gap-4 p-4 border-t">
-          <CustomPagination totalPages={5} currentPage={1} onPageChange={(page) => console.log("Page changed to:", page)} />
+            <CustomPagination
+              totalPages={5}
+              currentPage={1}
+              onPageChange={(page) => console.log("Page changed to:", page)}
+            />
           </div>
         </CardContent>
       </Card>
 
-      <AddMemberDialog open={isAddMemberDialogOpen} onOpenChange={setIsAddMemberDialogOpen} />
+      <AddMemberDialog
+        open={isAddMemberDialogOpen}
+        onOpenChange={setIsAddMemberDialogOpen}
+      />
     </div>
-  )
+  );
 }

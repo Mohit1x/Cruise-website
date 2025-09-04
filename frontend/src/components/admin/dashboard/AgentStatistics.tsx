@@ -59,10 +59,9 @@ export default function AgentStatistics() {
         <CardTitle className="text-base sm:text-lg">Agent Statistics</CardTitle>
         <div className="flex flex-col sm:flex-row items-start sm:items-center space-y-3 sm:space-y-0 sm:space-x-4">
           <div className="flex items-center space-x-2 w-full sm:w-auto">
-            <span className="text-xs sm:text-sm whitespace-nowrap">Statistical time</span>
             <Select value={timeFilter} onValueChange={setTimeFilter}>
               <SelectTrigger className="w-full sm:w-48 h-8 sm:h-10 text-xs sm:text-sm">
-                <SelectValue placeholder="Please select statistical" />
+                <SelectValue placeholder="Select statistical time" />
               </SelectTrigger>
               <SelectContent>
                 <SelectItem value="today">Today</SelectItem>

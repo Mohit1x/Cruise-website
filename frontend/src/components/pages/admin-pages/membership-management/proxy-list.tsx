@@ -1,13 +1,28 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Badge } from "@/components/ui/badge"
-import { Search } from "lucide-react"
+import { useState } from "react";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { Badge } from "@/components/ui/badge";
+import { Search } from "lucide-react";
+import DynamicBreadcrumbs from "@/components/DynamicBreadcurmbs";
+import { CustomPagination } from "@/components/CustomPagination";
 
 // Dummy data for Proxy List
 const proxyData = [
@@ -211,58 +226,58 @@ const proxyData = [
     usageStatus: "In use",
     addTime: "2024-10-14 16:06:06",
   },
-]
+];
 
 export default function ProxyList() {
-  const [username, setUsername] = useState("")
-  const [phoneNumber, setPhoneNumber] = useState("")
-  const [pageSize, setPageSize] = useState("25")
+  const [username, setUsername] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
 
   const getOperationBadgeClass = (operation: string) => {
     switch (operation) {
       case "subordinates":
-        return "bg-blue-500 text-white border-blue-500"
+        return "bg-blue-500 text-white border-blue-500";
       case "password":
-        return "bg-blue-600 text-white border-blue-600"
+        return "bg-blue-600 text-white border-blue-600";
       case "edit":
-        return "bg-teal-500 text-white border-teal-500"
+        return "bg-teal-500 text-white border-teal-500";
       case "delete":
-        return "bg-yellow-500 text-white border-yellow-500"
+        return "bg-yellow-500 text-white border-yellow-500";
       default:
-        return "bg-gray-500 text-white border-gray-500"
+        return "bg-gray-500 text-white border-gray-500";
     }
-  }
+  };
 
   return (
     <div className="space-y-4 sm:space-y-6">
       {/* Breadcrumb */}
-      <div className="text-xs sm:text-sm text-gray-500">
-        Admin &gt; Membership Management &gt; Agent Management &gt; Proxy List
+      <div className="pt-4 pl-3">
+        <DynamicBreadcrumbs />
       </div>
 
-      <Card>
-        <CardHeader className="pb-3 sm:pb-6">
+      <Card className="rounded-none">
+        <CardHeader className="p-3 sm:pb-6 flex flex-col sm:flex-row sm:items-center sm:justify-between space-y-3 sm:space-y-0">
           <CardTitle className="text-base sm:text-lg">Conditional Search</CardTitle>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-4">
-            <div className="flex items-center space-x-2">
-              <span className="text-xs sm:text-sm whitespace-nowrap">Username</span>
+          <div className="flex flex-col sm:flex-row items-start sm:items-center space-y-3 sm:space-y-0 sm:space-x-4">
+            <div className="flex items-center space-x-2 w-full sm:w-auto">
               <Input
-                placeholder="Please enter your username"
+                placeholder="Enter your username"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
                 className="w-full h-8 sm:h-10 text-xs sm:text-sm"
               />
             </div>
             <div className="flex items-center space-x-2">
-              <span className="text-xs sm:text-sm whitespace-nowrap">phone number</span>
               <Input
-                placeholder="Please enter your mobile number"
+                placeholder="Enter your mobile no."
                 value={phoneNumber}
                 onChange={(e) => setPhoneNumber(e.target.value)}
                 className="w-full h-8 sm:h-10 text-xs sm:text-sm"
               />
             </div>
-            <Button size="sm" className="h-8 sm:h-10 px-2 sm:px-3 w-full sm:w-auto">
+            <Button
+              size="sm"
+              className="h-8 sm:h-10 px-2 sm:px-3 w-full sm:w-auto"
+            >
               <Search className="h-3 w-3 sm:h-4 sm:w-4 mr-2" /> Search
             </Button>
           </div>
@@ -274,8 +289,13 @@ export default function ProxyList() {
               <Card key={index} className="p-3">
                 <div className="space-y-2">
                   <div className="flex justify-between items-center">
-                    <span className="font-medium text-sm">ID: {proxy.realUserId}</span>
-                    <Badge variant="outline" className="text-xs bg-green-500 text-white border-green-500">
+                    <span className="font-medium text-sm">
+                      ID: {proxy.realUserId}
+                    </span>
+                    <Badge
+                      variant="outline"
+                      className="text-xs bg-green-500 text-white border-green-500"
+                    >
                       {proxy.usageStatus}
                     </Badge>
                   </div>
@@ -293,7 +313,8 @@ export default function ProxyList() {
                     </div>
                     <div>
                       <div>
-                        <strong>Inv. Code:</strong> {proxy.invitationCode || "N/A"}
+                        <strong>Inv. Code:</strong>{" "}
+                        {proxy.invitationCode || "N/A"}
                       </div>
                       <div>
                         <strong>Logins:</strong> {proxy.numberOfLogins}
@@ -304,11 +325,17 @@ export default function ProxyList() {
                     </div>
                   </div>
                   <div className="flex flex-wrap gap-1 mt-2">
-                    {["subordinates", "password", "edit", "delete"].map((op, opIndex) => (
-                      <Badge key={opIndex} variant="outline" className={`text-xs ${getOperationBadgeClass(op)}`}>
-                        {op}
-                      </Badge>
-                    ))}
+                    {["subordinates", "password", "edit", "delete"].map(
+                      (op, opIndex) => (
+                        <Badge
+                          key={opIndex}
+                          variant="outline"
+                          className={`text-xs ${getOperationBadgeClass(op)}`}
+                        >
+                          {op}
+                        </Badge>
+                      )
+                    )}
                   </div>
                 </div>
               </Card>
@@ -320,13 +347,23 @@ export default function ProxyList() {
             <Table>
               <TableHeader>
                 <TableRow>
-                  <TableHead className="text-xs sm:text-sm">Real User ID</TableHead>
+                  <TableHead className="text-xs sm:text-sm">
+                    Real User ID
+                  </TableHead>
                   <TableHead className="text-xs sm:text-sm">level</TableHead>
                   <TableHead className="text-xs sm:text-sm">username</TableHead>
-                  <TableHead className="text-xs sm:text-sm">phone number</TableHead>
-                  <TableHead className="text-xs sm:text-sm">Invitation Code</TableHead>
-                  <TableHead className="text-xs sm:text-sm">Number of logins</TableHead>
-                  <TableHead className="text-xs sm:text-sm">Usage Status</TableHead>
+                  <TableHead className="text-xs sm:text-sm">
+                    phone number
+                  </TableHead>
+                  <TableHead className="text-xs sm:text-sm">
+                    Invitation Code
+                  </TableHead>
+                  <TableHead className="text-xs sm:text-sm">
+                    Number of logins
+                  </TableHead>
+                  <TableHead className="text-xs sm:text-sm">
+                    Usage Status
+                  </TableHead>
                   <TableHead className="text-xs sm:text-sm">Add Time</TableHead>
                   <TableHead className="text-xs sm:text-sm">operate</TableHead>
                 </TableRow>
@@ -334,25 +371,50 @@ export default function ProxyList() {
               <TableBody>
                 {proxyData.map((proxy, index) => (
                   <TableRow key={index}>
-                    <TableCell className="text-xs sm:text-sm">{proxy.realUserId}</TableCell>
-                    <TableCell className="text-xs sm:text-sm">{proxy.level}</TableCell>
-                    <TableCell className="text-xs sm:text-sm">{proxy.username}</TableCell>
-                    <TableCell className="text-xs sm:text-sm">{proxy.phoneNumber || ""}</TableCell>
-                    <TableCell className="text-xs sm:text-sm">{proxy.invitationCode}</TableCell>
-                    <TableCell className="text-xs sm:text-sm">{proxy.numberOfLogins}</TableCell>
                     <TableCell className="text-xs sm:text-sm">
-                      <Badge variant="outline" className="text-xs bg-green-500 text-white border-green-500">
+                      {proxy.realUserId}
+                    </TableCell>
+                    <TableCell className="text-xs sm:text-sm">
+                      {proxy.level}
+                    </TableCell>
+                    <TableCell className="text-xs sm:text-sm">
+                      {proxy.username}
+                    </TableCell>
+                    <TableCell className="text-xs sm:text-sm">
+                      {proxy.phoneNumber || ""}
+                    </TableCell>
+                    <TableCell className="text-xs sm:text-sm">
+                      {proxy.invitationCode}
+                    </TableCell>
+                    <TableCell className="text-xs sm:text-sm">
+                      {proxy.numberOfLogins}
+                    </TableCell>
+                    <TableCell className="text-xs sm:text-sm">
+                      <Badge
+                        variant="outline"
+                        className="text-xs bg-green-500 text-white border-green-500"
+                      >
                         {proxy.usageStatus}
                       </Badge>
                     </TableCell>
-                    <TableCell className="text-xs sm:text-sm">{proxy.addTime}</TableCell>
+                    <TableCell className="text-xs sm:text-sm">
+                      {proxy.addTime}
+                    </TableCell>
                     <TableCell className="text-xs sm:text-sm">
                       <div className="flex flex-wrap gap-1">
-                        {["subordinates", "password", "edit", "delete"].map((op, opIndex) => (
-                          <Badge key={opIndex} variant="outline" className={`text-xs ${getOperationBadgeClass(op)}`}>
-                            {op}
-                          </Badge>
-                        ))}
+                        {["subordinates", "password", "edit", "delete"].map(
+                          (op, opIndex) => (
+                            <Badge
+                              key={opIndex}
+                              variant="outline"
+                              className={`text-xs ${getOperationBadgeClass(
+                                op
+                              )}`}
+                            >
+                              {op}
+                            </Badge>
+                          )
+                        )}
                       </div>
                     </TableCell>
                   </TableRow>
@@ -362,24 +424,15 @@ export default function ProxyList() {
           </div>
 
           {/* Pagination */}
-          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 p-4 border-t">
-            <div className="flex items-center space-x-2 text-xs sm:text-sm text-gray-600">
-              <span>Total 28 records, displayed per page</span>
-              <Select value={pageSize} onValueChange={setPageSize}>
-                <SelectTrigger className="w-16 h-8">
-                  <SelectValue />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="10">10</SelectItem>
-                  <SelectItem value="25">25</SelectItem>
-                  <SelectItem value="50">50</SelectItem>
-                </SelectContent>
-              </Select>
-              <span>items, total 2 pages, currently showing page 1.</span>
-            </div>
+          <div className="flex flex-col sm:flex-row gap-4 p-4 border-t">
+            <CustomPagination
+              totalPages={5}
+              currentPage={1}
+              onPageChange={(page) => console.log("Page changed to:", page)}
+            />
           </div>
         </CardContent>
       </Card>
     </div>
-  )
+  );
 }

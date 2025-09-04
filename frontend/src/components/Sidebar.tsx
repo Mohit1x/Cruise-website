@@ -59,8 +59,8 @@ function MenuItem({ item, level = 0 }: { item: MenuItem; level?: number }) {
             }}
           >
             <div className="flex items-center space-x-3 w-full">
-              <item.icon className="h-4 w-4 sm:h-5 sm:w-5" />
-              {(isOpen || isMobile) && (
+              <item.icon className="h-4 w-4 sm:h-5 sm:w-10" />
+              {(isOpen) && (
                 <span className="text-sm">{item.title}</span>
               )}
             </div>
@@ -108,7 +108,7 @@ export default function AppSidebar() {
               size="icon"
               onClick={() => toggle()}
             >
-              {isOpen || isMobile ? <ChevronLeft /> : <Menu />}
+              {isOpen && !isMobile ? <ChevronLeft /> : <Menu />}
             </Button>
           </div>
           <SidebarGroupContent>
