@@ -3,7 +3,7 @@ import { Autoplay, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 import { useEffect, useState } from "react";
-import { features } from "@/constansts/utils";
+import { features } from "@/constants/utils";
 
 export default function FeaturesSection() {
   const [isMobile, setIsMobile] = useState(false);

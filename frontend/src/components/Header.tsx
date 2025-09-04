@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { SpinWheelModal } from "./SpinWheelModal";
 import { Link, useLocation } from "react-router";
-import { CreditScoreModal } from "./Home-components/CreditScoreModel";
+import { CreditScoreModal } from "./Home/CreditScoreModel";
 
 const Header = () => {
     const [isModalOpen, setIsModalOpen] = useState(false)

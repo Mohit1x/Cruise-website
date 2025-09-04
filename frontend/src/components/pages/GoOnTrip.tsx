@@ -1,4 +1,4 @@
-import TravelComponent from "@/components/go-on-trip-components/TravelComponent"
+import TravelComponent from "@/components/go-on-trip/TravelComponent"
 
 const GoOnTrip = ()=>{
     return(

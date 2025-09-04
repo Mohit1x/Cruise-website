@@ -55,7 +55,7 @@ export default function AgentStatistics() {
 
   return (
     <Card>
-      <CardHeader className="pb-3 sm:pb-6">
+      <CardHeader className="p-3 sm:pb-6 flex flex-col sm:flex-row sm:items-center sm:justify-between space-y-3 sm:space-y-0">
         <CardTitle className="text-base sm:text-lg">Agent Statistics</CardTitle>
         <div className="flex flex-col sm:flex-row items-start sm:items-center space-y-3 sm:space-y-0 sm:space-x-4">
           <div className="flex items-center space-x-2 w-full sm:w-auto">

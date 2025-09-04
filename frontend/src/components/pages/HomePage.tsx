@@ -1,9 +1,9 @@
-import { otherPortsData, propularDestination } from "@/constansts/utils";
-import HeroComponent from "../components/Home-components/HeroComponent";
-import CarouselComponent from "@/components/Home-components/CarouselComponent";
-import { OtherPorts } from "@/components/Home-components/OtherPorts";
-import { MobileHero } from "@/components/Home-components/MobileHero";
-import FeaturesSection from "@/components/Home-components/FeaturedComponent";
+import { otherPortsData, propularDestination } from "@/constants/utils";
+import HeroComponent from "@/components/Home/HeroComponent";
+import CarouselComponent from "@/components/Home/CarouselComponent";
+import { OtherPorts } from "@/components/Home/OtherPorts";
+import { MobileHero } from "@/components/Home/MobileHero";
+import FeaturesSection from "@/components/Home/FeaturedComponent";
 
 const HomePage = () => {
   return (

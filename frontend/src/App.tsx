@@ -1,17 +1,16 @@
 import { BrowserRouter as Router, Route, Routes, Outlet } from "react-router-dom";
-import HomePage from "./pages/HomePage";
+import HomePage from "./components/pages/HomePage";
 import Layout from "./components/Layout"
 import AdminLayout from "./components/AdminLayout"; 
-import { CruisePage } from "./pages/CruisePage";
-import { AuthPage } from "./pages/AuthPages";
-import AccountPage from "./pages/AccountPage";
-import GoOnTrip from "./pages/GoOnTrip";
-// import MembershipLevel from "./pages/MembershipLevel";\
-import Dashboard from "./pages/admin-pages/Dashboard";
-import MemberList from "./pages/admin-pages/membership-management/member-list";
-import MembershipLevel from "./pages/admin-pages/membership-management/membership-level";
-import ProxyList from "./pages/admin-pages/membership-management/proxy-list";
-import CustomerServiceList from "./pages/admin-pages/membership-management/customer-service-list";
+import { CruisePage } from "./components/pages/CruisePage";
+import { AuthPage } from "./components/pages/AuthPages";
+import AccountPage from "./components/pages/AccountPage";
+import GoOnTrip from "./components/pages/GoOnTrip";
+import Dashboard from "./components/pages/admin-pages/Dashboard";
+import MemberList from "./components/pages/admin-pages/membership-management/member-list";
+import MembershipLevel from "./components/pages/admin-pages/membership-management/membership-level";
+import ProxyList from "./components/pages/admin-pages/membership-management/proxy-list";
+import CustomerServiceList from "./components/pages/admin-pages/membership-management/customer-service-list";
 import AccountHistory from "./components/account/AccountHistory";
 import VipLevelPage from "./components/account/VipLevelPage";
 

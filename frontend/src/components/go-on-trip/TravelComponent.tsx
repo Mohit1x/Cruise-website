@@ -22,7 +22,7 @@ export default function TravelComponent() {
         </div>
 
         <div className="space-y-3">
-          <h2 className="text-xl md:text-2xl lg:text-3xl font-bold text-gray-900 leading-tight text-gray-700">
+          <h2 className="text-xl md:text-2xl lg:text-3xl font-bold text-gray-900 leading-tight">
             Start Traveling Now
           </h2>
           <p className="text-sm md:text-base text-gray-600 leading-relaxed px-2">
