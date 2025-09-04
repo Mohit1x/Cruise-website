@@ -14,7 +14,7 @@ import {
 } from "@/components/ui/carousel";
 import { Heart, Share, Star, Calendar } from "lucide-react";
 import { cruisesFromAuckland } from "@/constants/cruise-data";
-import { Pagination } from "@/components/Pagination";
+import { CustomPagination } from "@/components/CustomPagination";
 
 const ITEMS_PER_PAGE = 4;
 
@@ -155,8 +155,8 @@ export const CruisePage = () => {
         ))}
       </div>
 
-      <div className="mt-12 flex justify-center">
-        <Pagination
+      <div className="mt-12 flex justify-end">
+        <CustomPagination
           totalPages={pageCount}
           currentPage={page}
           onPageChange={(n: any) => setPage(n)}

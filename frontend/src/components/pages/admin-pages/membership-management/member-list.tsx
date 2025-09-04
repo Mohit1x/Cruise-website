@@ -9,6 +9,8 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Badge } from "@/components/ui/badge"
 import { Search, Plus, Download } from "lucide-react"
 import { AddMemberDialog } from "./add-member-dialog"
+import DynamicBreadcrumbs from "@/components/DynamicBreadcurmbs"
+import { CustomPagination } from "@/components/CustomPagination"
 
 // Dummy data for Member List
 const memberData = [
@@ -251,7 +253,6 @@ export default function MemberList() {
   const [invitationCode, setInvitationCode] = useState("")
   const [registrationTime, setRegistrationTime] = useState("") // Date range
   const [loginIp, setLoginIp] = useState("")
-  const [pageSize, setPageSize] = useState("10")
   const [isAddMemberDialogOpen, setIsAddMemberDialogOpen] = useState(false) // State for dialog
 
   const getOnlineStatusBadgeClass = (status: string) => {
@@ -292,11 +293,14 @@ export default function MemberList() {
   return (
     <div className="space-y-4 sm:space-y-6">
       {/* Breadcrumb */}
-      <div className="text-xs sm:text-sm text-gray-500">Admin &gt; Membership Management &gt; Member List</div>
+      <div className="pt-4 pl-3">
+        <DynamicBreadcrumbs/>
+      </div>
+      
 
-      <Card>
+      <Card className="rounded-none">
         <CardHeader className="pb-3 sm:pb-6">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-0">
+          <div className="mt-2 flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-0">
             <CardTitle className="text-base sm:text-lg">Member List</CardTitle>
             <div className="flex gap-2">
               <Button
@@ -599,23 +603,8 @@ export default function MemberList() {
           </div>
 
           {/* Pagination */}
-          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 p-4 border-t">
-            <div className="flex items-center space-x-2 text-xs sm:text-sm text-gray-600">
-              <span>Total {memberData.length} records, displayed per page</span>
-              <Select value={pageSize} onValueChange={setPageSize}>
-                <SelectTrigger className="w-16 h-8">
-                  <SelectValue />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="10">10</SelectItem>
-                  <SelectItem value="20">20</SelectItem>
-                  <SelectItem value="50">50</SelectItem>
-                </SelectContent>
-              </Select>
-              <span>
-                items, total {Math.ceil(memberData.length / Number.parseInt(pageSize))} page, currently showing page 1.
-              </span>
-            </div>
+          <div className="flex flex-col sm:flex-row gap-4 p-4 border-t">
+          <CustomPagination totalPages={5} currentPage={1} onPageChange={(page) => console.log("Page changed to:", page)} />
           </div>
         </CardContent>
       </Card>

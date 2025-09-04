@@ -98,7 +98,7 @@ export default function AppSidebar() {
 
   return (
     <Sidebar
-      className={`collapsible-icon ${isOpen ? "w-64" : isMobile ? "w-14" : "w-28"}`}
+      className={`h-auto collapsible-icon ${isOpen ? "w-64" : isMobile ? "w-14" : "w-28"}`}
     >
       <SidebarContent>
         <SidebarGroup>

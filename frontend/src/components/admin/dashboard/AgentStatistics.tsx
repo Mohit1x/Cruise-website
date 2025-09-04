@@ -54,7 +54,7 @@ export default function AgentStatistics() {
   const [timeFilter, setTimeFilter] = useState('')
 
   return (
-    <Card>
+    <Card className='rounded-none'>
       <CardHeader className="p-3 sm:pb-6 flex flex-col sm:flex-row sm:items-center sm:justify-between space-y-3 sm:space-y-0">
         <CardTitle className="text-base sm:text-lg">Agent Statistics</CardTitle>
         <div className="flex flex-col sm:flex-row items-start sm:items-center space-y-3 sm:space-y-0 sm:space-x-4">
