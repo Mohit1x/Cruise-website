@@ -1,6 +1,5 @@
 package com.crusie.backend.models;
 
-
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -29,7 +28,7 @@ public class User extends Auditable implements UserDetails {
     private String id;
 
     @Column(name = "token",unique = true)
-    private String refreshToken;
+    private String token;
 
     @NotBlank
     @Size(max = 30)

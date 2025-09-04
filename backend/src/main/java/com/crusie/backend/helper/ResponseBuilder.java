@@ -10,12 +10,15 @@ import java.util.Map;
 
 public class ResponseBuilder {
 
-    private ResponseEntity<Object> buildResponse(String message, HttpStatus status) {
+    public ResponseEntity<Object> buildResponse(String message, Map<String, Object> data, HttpStatus status) {
         Map<String, Object> body = new HashMap<>();
         body.put("timestamp", LocalDateTime.now());
         body.put("status", status.value());
         body.put("error", status.getReasonPhrase());
         body.put("message", message);
+        if (data != null && !data.isEmpty()) {
+            body.put("data", data);
+        }
         return new ResponseEntity<>(body, status);
     }
 }
