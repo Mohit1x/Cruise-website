@@ -10,13 +10,6 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 import { Badge } from "@/components/ui/badge";
 import { EditMembershipLevelDialog } from "@/components/admin/member-management/edit-membership-level-dialog";
 import DynamicBreadcrumbs from "@/components/DynamicBreadcurmbs";
@@ -139,8 +132,6 @@ const membershipData = [
 ];
 
 export default function MembershipLevel() {
-  // const [searchTerm, setSearchTerm] = useState("")
-  const [pageSize, setPageSize] = useState("20");
   const [isEditDialogOpen, setIsEditDialogOpen] = useState(false);
   const [selectedMembershipLevel, setSelectedMembershipLevel] = useState<
     (typeof membershipData)[0] | null

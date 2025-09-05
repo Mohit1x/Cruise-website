@@ -12,13 +12,6 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 import { Badge } from "@/components/ui/badge";
 import { Search, Plus } from "lucide-react";
 import DynamicBreadcrumbs from "@/components/DynamicBreadcurmbs";
@@ -47,7 +40,6 @@ const customerServiceData = [
 export default function CustomerServiceList() {
   const [username, setUsername] = useState("");
   const [registrationTime, setRegistrationTime] = useState("");
-  const [pageSize, setPageSize] = useState("20");
 
   const getOperationBadgeClass = (operation: string) => {
     switch (operation) {
