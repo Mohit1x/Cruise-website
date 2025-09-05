@@ -67,6 +67,10 @@ public class User extends Auditable implements UserDetails {
     @JsonManagedReference
     private BankDetails bankDetails;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "membership_level_id", nullable = false)
+    private MembershipLevel membershipLevel;
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of(new SimpleGrantedAuthority(role.name()));

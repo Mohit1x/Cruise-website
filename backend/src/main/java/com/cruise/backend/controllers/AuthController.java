@@ -28,9 +28,7 @@ import java.util.Map;
 public class AuthController {
 
     private final UserService userServ;
-    private final ResponseBuilder responseBuilder;
     private final AuthenticationManager authManager;
-    private final JwtHelper helper;
 
 
     @PostMapping(value = "/register")
@@ -38,8 +36,9 @@ public class AuthController {
         User savedUser = userServ.register(user);
         Map<String, Object> data = new HashMap<>();
         data.put("user", savedUser);
+        data.put("message","User registered successfully");
         log.info("User added Successfully");
-        return responseBuilder.buildResponse("User registered successfully", data, HttpStatus.CREATED);
+        return new ResponseEntity<>(data, HttpStatus.OK);
     }
 
     @PostMapping(value = "/login")

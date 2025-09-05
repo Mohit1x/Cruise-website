@@ -23,22 +23,22 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(NotFoundException.class)
     public ResponseEntity<Object> handleNotFound(NotFoundException ex) {
-        return responseBuilder.buildResponse(ex.getMessage(), HttpStatus.NOT_FOUND);
+        return responseBuilder.buildResponse(ex.getMessage(), null, HttpStatus.NOT_FOUND);
     }
 
     @ExceptionHandler(UserAlreadyExistsException.class)
     public ResponseEntity<Object> handleUserAlreadyExists(UserAlreadyExistsException ex) {
-        return responseBuilder.buildResponse(ex.getMessage(), HttpStatus.CONFLICT);
+        return responseBuilder.buildResponse(ex.getMessage(), null, HttpStatus.CONFLICT);
     }
 
     @ExceptionHandler({InvalidCredentialsException.class, BadCredentialsException.class})
     public ResponseEntity<Object> handleInvalidCredentials(RuntimeException ex) {
-        return responseBuilder.buildResponse(ex.getMessage(), HttpStatus.UNAUTHORIZED);
+        return responseBuilder.buildResponse(ex.getMessage(), null, HttpStatus.UNAUTHORIZED);
     }
 
     @ExceptionHandler(TokenValidationException.class)
     public ResponseEntity<Object> handleTokenValidation(TokenValidationException ex) {
-        return responseBuilder.buildResponse(ex.getMessage(), HttpStatus.FORBIDDEN);
+        return responseBuilder.buildResponse(ex.getMessage(), null, HttpStatus.FORBIDDEN);
     }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
@@ -56,7 +56,7 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(Exception.class)
     public ResponseEntity<Object> handleGeneral(Exception ex) {
-        return responseBuilder.buildResponse("Unexpected error: " + ex.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+        return responseBuilder.buildResponse("Unexpected error: " + ex.getMessage(), null, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
 }
