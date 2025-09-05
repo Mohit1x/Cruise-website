@@ -68,14 +68,14 @@ export function Sidebar({ children, className }: SidebarProps) {
       {/* Mobile Overlay */}
       {isMobile && isOpen && (
         <div 
-          className="fixed inset-0 bg-black bg-opacity-50 md:hidden"
+          className="fixed inset-0 bg-black transition-opacity duration-300 ease-in-out bg-opacity-50 md:hidden"
           onClick={() => {}}
         />
       )}
       
       {/* Sidebar */}
       <div className={cn(
-        "bg-white border-r border-gray-200 transition-all duration-300 relative",
+        "bg-white border-r border-gray-200 transition-transform duration-300 ease-in-out relative",
         isMobile 
           ?  [
           "relative left-0",
