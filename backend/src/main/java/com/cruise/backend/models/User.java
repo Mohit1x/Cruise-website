@@ -15,6 +15,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.UUID;
 
 @Entity
 @Builder
@@ -79,5 +80,13 @@ public class User extends Auditable implements UserDetails {
     @Override
     public String getUsername() {
         return this.email;
+    }
+
+    @PrePersist
+    private void prePersist(){
+        if(this.id == null){
+            this.id = UUID.randomUUID().toString();
+            this.membershipLevel.setId(this.id);
+        }
     }
 }

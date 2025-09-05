@@ -6,6 +6,7 @@ import lombok.*;
 import org.hibernate.annotations.UuidGenerator;
 
 import java.math.BigDecimal;
+import java.util.UUID;
 
 @Entity
 @Builder
@@ -39,4 +40,5 @@ public class MembershipLevel {
 
     @Column(name = "maximum_withdrawal", nullable = false, precision = 15, scale = 2)
     private BigDecimal maximumWithdrawal;
+
 }

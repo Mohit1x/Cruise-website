@@ -5,6 +5,7 @@ import com.cruise.backend.models.User;
 import com.cruise.backend.repositories.UserRepo;
 import com.cruise.backend.security.JwtHelper;
 import io.jsonwebtoken.ExpiredJwtException;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.BeanUtils;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -42,6 +43,7 @@ public class UserService implements UserDetailsService {
                 .orElseThrow(() -> new RuntimeException("User Not found By Email..."));
     }
 
+    @Transactional
     public User register(User user) {
         if (userRepo.findByEmail(user.getEmail()).isPresent()) {
             throw new UserAlreadyExistsException("User with email " + user.getEmail() + " already exists");

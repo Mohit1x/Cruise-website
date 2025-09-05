@@ -1,6 +1,5 @@
 package com.cruise.backend.exceptions;
 
-import com.cruise.backend.helper.ResponseBuilder;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -19,26 +18,36 @@ import java.util.Map;
 @RequiredArgsConstructor
 public class GlobalExceptionHandler {
 
-    private ResponseBuilder responseBuilder;
+    private ResponseEntity<Object> buildResponse(String message, Map<String, Object> data, HttpStatus status) {
+        Map<String, Object> body = new HashMap<>();
+        body.put("timestamp", LocalDateTime.now());
+        body.put("status", status.value());
+        body.put("error", status.getReasonPhrase());
+        body.put("message", message);
+        if (data != null && !data.isEmpty()) {
+            body.put("data", data);
+        }
+        return new ResponseEntity<>(body, status);
+    }
 
     @ExceptionHandler(NotFoundException.class)
     public ResponseEntity<Object> handleNotFound(NotFoundException ex) {
-        return responseBuilder.buildResponse(ex.getMessage(), null, HttpStatus.NOT_FOUND);
+        return buildResponse(ex.getMessage(), null, HttpStatus.NOT_FOUND);
     }
 
     @ExceptionHandler(UserAlreadyExistsException.class)
     public ResponseEntity<Object> handleUserAlreadyExists(UserAlreadyExistsException ex) {
-        return responseBuilder.buildResponse(ex.getMessage(), null, HttpStatus.CONFLICT);
+        return buildResponse(ex.getMessage(), null, HttpStatus.CONFLICT);
     }
 
     @ExceptionHandler({InvalidCredentialsException.class, BadCredentialsException.class})
     public ResponseEntity<Object> handleInvalidCredentials(RuntimeException ex) {
-        return responseBuilder.buildResponse(ex.getMessage(), null, HttpStatus.UNAUTHORIZED);
+        return buildResponse(ex.getMessage(), null, HttpStatus.UNAUTHORIZED);
     }
 
     @ExceptionHandler(TokenValidationException.class)
     public ResponseEntity<Object> handleTokenValidation(TokenValidationException ex) {
-        return responseBuilder.buildResponse(ex.getMessage(), null, HttpStatus.FORBIDDEN);
+        return buildResponse(ex.getMessage(), null, HttpStatus.FORBIDDEN);
     }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
@@ -56,7 +65,7 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(Exception.class)
     public ResponseEntity<Object> handleGeneral(Exception ex) {
-        return responseBuilder.buildResponse("Unexpected error: " + ex.getMessage(), null, HttpStatus.INTERNAL_SERVER_ERROR);
+        return buildResponse("Unexpected error: " + ex.getMessage(), null, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
 }
