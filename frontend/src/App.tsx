@@ -13,14 +13,17 @@ import ProxyList from "./components/pages/admin-pages/membership-management/prox
 import CustomerServiceList from "./components/pages/admin-pages/membership-management/customer-service-list";
 import AccountHistory from "./components/account/AccountHistory";
 import VipLevelPage from "./components/account/VipLevelPage";
+import Demo from "./components/Demo";
 
 function App() {
   return (
       <Router>
         <Routes>
+        <Route path="/demo" element={<Demo />} />
           <Route path="/auth" element={<AuthPage />} />
           <Route element={<Layout />}>
             <Route path="/" element={<HomePage />} />
+           
             <Route path="/find-a-cruise/:id" element={<CruisePage />} />
             <Route path="/go-to-a-trip" element={<GoOnTrip />} />
             <Route path="/account" element={<AccountPage />} />

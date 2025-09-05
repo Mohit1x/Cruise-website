@@ -216,3 +216,11 @@ body {
 .google_translate_element {
   border: 1px solid black;
 }
+.mask-ticket{
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-size: 100% 100%;
+  -webkit-mask-position: "center";
+  mask-repeat: no-repeat;
+  mask-size: 150% 105%;
+  mask-position: 30% 25px;
+}
