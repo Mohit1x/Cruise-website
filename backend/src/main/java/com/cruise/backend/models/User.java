@@ -1,5 +1,7 @@
 package com.cruise.backend.models;
 
+import com.cruise.backend.constants.UsageStatus;
+import com.cruise.backend.constants.UserRole;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
@@ -20,6 +22,7 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Table(name = "users")
 public class User extends Auditable implements UserDetails {
 
     @Id
@@ -49,6 +52,16 @@ public class User extends Auditable implements UserDetails {
     @Enumerated(EnumType.STRING)
     @Column(name = "role", nullable = false, length = 10)
     private UserRole role;
+
+    @Column(name = "invitation_code", unique = true)
+    private String invitationCode;
+
+    @Column(name = "number_of_logins", nullable = false)
+    private Integer numberOfLogins;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "usage_status", nullable = false)
+    private UsageStatus usageStatus;
 
     @OneToOne(mappedBy = "user",cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JsonManagedReference

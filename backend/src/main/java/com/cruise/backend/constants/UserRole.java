@@ -1,4 +1,4 @@
-package com.cruise.backend.models;
+package com.cruise.backend.constants;
 
 public enum UserRole {
     ROLE_ADMIN,

@@ -11,6 +11,7 @@ import org.hibernate.annotations.UuidGenerator;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Table(name = "bank_dtls")
 public class BankDetails {
 
     @Id
