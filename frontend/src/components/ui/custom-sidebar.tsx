@@ -77,9 +77,10 @@ export function Sidebar({ children, className }: SidebarProps) {
       <div className={cn(
         "bg-white border-r border-gray-200 transition-all duration-300 relative",
         isMobile 
-          ? isOpen 
-            ? " w-64 " 
-            : " w-0 "
+          ?  [
+          "relative left-0 h-auto",
+          isOpen ? "fixed w-64 z-50 h-full" : "w-0"
+        ].join(" ")
           : isOpen 
             ? "w-64" 
             : "w-16",

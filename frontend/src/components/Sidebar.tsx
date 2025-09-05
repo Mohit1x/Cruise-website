@@ -34,7 +34,7 @@ function MenuItem({ item, level = 0 }: { item: MenuItem; level?: number }) {
 
   const [isExpanded, setIsExpanded] = useState(isActive);
 
-  const { isOpen, isMobile } = useSidebar();
+  const { isOpen } = useSidebar();
 
   const hasChildren = item.children && item.children.length > 0;
 
