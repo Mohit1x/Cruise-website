@@ -1,4 +1,5 @@
 import { Card, CardContent } from "@/components/ui/card"
+import { useSidebar } from "@/components/ui/custom-sidebar"
 import { ArrowUpRight } from "lucide-react"
 
 const statisticsData = [
@@ -107,6 +108,7 @@ const getColorClasses = (color: string) => {
 }
 
 export default function StatisticsGrid() {
+  const {isOpen, isMobile}= useSidebar();
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-4">
       {statisticsData.map((stat, index) => {
@@ -133,7 +135,7 @@ export default function StatisticsGrid() {
                 </div>
 
                 {/* Right Icon */}
-                <div className={`ml-2 sm:ml-4 opacity-60 flex-shrink-0 ${colorClasses.bg} rounded-full p-1 sm:p-2`}>
+                <div className={`ml-2 sm:ml-4 ${isOpen && isMobile ? "opacity-0" : "opacity-60"} flex-shrink-0 ${colorClasses.bg} rounded-full p-1 sm:p-2`}>
                   <ArrowUpRight className={`w-6 h-6 sm:w-8 sm:h-8 ${colorClasses.text}`} />
                 </div>
               </div>

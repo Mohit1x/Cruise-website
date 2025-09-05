@@ -108,7 +108,7 @@ export default function AppSidebar() {
               size="icon"
               onClick={() => toggle()}
             >
-              {isOpen && !isMobile ? <ChevronLeft /> : <Menu />}
+              {isOpen ? <ChevronLeft /> : <ChevronRight />}
             </Button>
           </div>
           <SidebarGroupContent>
