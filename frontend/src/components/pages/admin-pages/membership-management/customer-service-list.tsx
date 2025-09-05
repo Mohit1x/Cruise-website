@@ -85,7 +85,7 @@ export default function CustomerServiceList() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-4">
             <div className="flex items-center space-x-2">
               <Input
-                placeholder="Please enter your username"
+                placeholder="Enter your username"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
                 className="w-full h-8 sm:h-10 text-xs sm:text-sm"
@@ -93,7 +93,7 @@ export default function CustomerServiceList() {
             </div>
             <div className="flex items-center space-x-2">
               <Input
-                placeholder="Please select the registration time"
+                placeholder="Select the registration time"
                 value={registrationTime}
                 onChange={(e) => setRegistrationTime(e.target.value)}
                 className="w-full h-8 sm:h-10 text-xs sm:text-sm"

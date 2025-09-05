@@ -127,19 +127,7 @@ import {
     {
       title: "Customer Service Management",
       icon: Headphones,
-      url: "/admin/customer-service",
-      children: [
-        {
-          title: "Customer Service...",
-          icon: Headphones,
-          url: "/admin/membership-management/customer-service-list",
-        },
-        {
-          title: "Customer Service...",
-          icon: Headphones,
-          url: "/admin/customer-service/2",
-        },
-      ],
+      url: "/admin/membership-management/list",
     },
   ]
   
@@ -148,6 +136,16 @@ import {
       title: "Dashboard",
       icon: Home,
       url: "/admin/dashboard",
+    },
+     {
+      title: "Membership Management",
+      icon: UserCog,
+      url: "/admin/membership-management/member-list",
+    },
+     {
+      title: "Trade",
+      icon: BarChart3,
+      url: "/admin/trade",
     },
     {
       title: "Help Center",

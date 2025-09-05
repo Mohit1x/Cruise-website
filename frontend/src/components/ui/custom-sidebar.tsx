@@ -78,7 +78,7 @@ export function Sidebar({ children, className }: SidebarProps) {
         "bg-white border-r border-gray-200 transition-all duration-300 relative",
         isMobile 
           ?  [
-          "relative left-0 h-auto",
+          "relative left-0",
           isOpen ? "fixed w-64 z-50 h-full" : "w-0"
         ].join(" ")
           : isOpen 

@@ -1,4 +1,4 @@
-import { ChartCandlestick, ChevronDown, Menu, MessageCircleQuestionMark, MonitorCog,User,UserCog } from "lucide-react";
+import { ChartCandlestick, ChevronDown, Home, Menu, MessageCircleQuestionMark, MonitorCog,User,UserCog } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import {
@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 
 const NAV_LINKS = [
-  { path: "/admin/dashboard", label: "Backstage Homepage" },
+  { path: "/admin/dashboard", label: "Dashboard",icon: Home, },
   {
     path: "/admin/membership-management/member-list",
     label: "Membership Management",

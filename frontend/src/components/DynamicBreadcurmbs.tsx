@@ -12,7 +12,7 @@ import {
 
 export default function DynamicBreadcrumbs() {
   const location = useLocation()
-  const pathname = location.pathname // e.g. "/home/user/acc"
+  const pathname = location.pathname
 
   // Split and clean up segments
   const segments = pathname

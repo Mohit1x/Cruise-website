@@ -98,7 +98,7 @@ export default function AppSidebar() {
 
   return (
     <Sidebar
-      className={`h-auto collapsible-icon ${isOpen ? "w-64" : isMobile ? "w-14" : "w-28"}`}
+      className={`collapsible-icon ${isOpen ? "w-64" : isMobile ? "w-14" : "w-fit"}`}
     >
       <SidebarContent>
         <SidebarGroup>
@@ -112,7 +112,7 @@ export default function AppSidebar() {
             </Button>
           </div>
           <SidebarGroupContent>
-            <SidebarMenu>
+            <SidebarMenu className={`flex flex-col ${!isOpen ? "items-center" : "items-start"} justify-between`}>
               {menuItems.map((item, index) => (
                 <MenuItem key={index} item={item} />
               ))}

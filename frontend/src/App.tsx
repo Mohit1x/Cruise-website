@@ -37,7 +37,7 @@ function App() {
               <Route path="member-list" element={<MemberList/>} />
               <Route path="membership-level" element={<MembershipLevel />} />
             <Route path="proxy-list" element={<ProxyList />} />
-            <Route path="customer-service-list" element={<CustomerServiceList />} />
+            <Route path="list" element={<CustomerServiceList />} />
             </Route>
             <Route path="trade" element={<div>Trade Page Placeholder</div>} />
             <Route path="help-center" element={<div>Help Center Page Placeholder</div>} />

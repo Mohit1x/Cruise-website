@@ -348,10 +348,10 @@ export default function MemberList() {
                 onValueChange={setFirstLevelAgent}
               >
                 <SelectTrigger className="w-full h-8 sm:h-10 text-xs sm:text-sm">
-                  <SelectValue placeholder="全部" />
+                  <SelectValue placeholder="All" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="all">全部</SelectItem>
+                  <SelectItem value="all">All</SelectItem>
                   <SelectItem value="agent1">Agent 1</SelectItem>
                   <SelectItem value="agent2">Agent 2</SelectItem>
                 </SelectContent>
@@ -363,10 +363,10 @@ export default function MemberList() {
               </span>
               <Select value={secondaryAgent} onValueChange={setSecondaryAgent}>
                 <SelectTrigger className="w-full h-8 sm:h-10 text-xs sm:text-sm">
-                  <SelectValue placeholder="全部" />
+                  <SelectValue placeholder="All" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="all">全部</SelectItem>
+                  <SelectItem value="all">All</SelectItem>
                   <SelectItem value="subagent1">Sub-Agent 1</SelectItem>
                   <SelectItem value="subagent2">Sub-Agent 2</SelectItem>
                 </SelectContent>
@@ -378,10 +378,10 @@ export default function MemberList() {
               </span>
               <Select value={level} onValueChange={setLevel}>
                 <SelectTrigger className="w-full h-8 sm:h-10 text-xs sm:text-sm">
-                  <SelectValue placeholder="全部等级" />
+                  <SelectValue placeholder="All Levels" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="all">全部等级</SelectItem>
+                  <SelectItem value="all">All Levels</SelectItem>
                   <SelectItem value="vip0">VIP0</SelectItem>
                   <SelectItem value="vip1">VIP1</SelectItem>
                 </SelectContent>
@@ -393,10 +393,10 @@ export default function MemberList() {
               </span>
               <Select value={overlayGroup} onValueChange={setOverlayGroup}>
                 <SelectTrigger className="w-full h-8 sm:h-10 text-xs sm:text-sm">
-                  <SelectValue placeholder="全部叠加组" />
+                  <SelectValue placeholder="All Overlay Groups" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="all">全部叠加组</SelectItem>
+                  <SelectItem value="all">All Overlay Groups</SelectItem>
                   <SelectItem value="group1">Group 1</SelectItem>
                   <SelectItem value="group2">Group 2</SelectItem>
                 </SelectContent>
@@ -448,32 +448,32 @@ export default function MemberList() {
               </Select>
             </div>
             <Input
-              placeholder="Please enter your username"
+              placeholder="Enter your username"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
               className="w-full h-8 sm:h-10 text-xs sm:text-sm"
             />
             <Input
-              placeholder="Please enter your phone number"
+              placeholder="Enter your phone number"
               value={phoneNumber}
               onChange={(e) => setPhoneNumber(e.target.value)}
               className="w-full h-8 sm:h-10 text-xs sm:text-sm"
             />
             <Input
-              placeholder="Please enter your invitation code"
+              placeholder="Enter your invitation code"
               value={invitationCode}
               onChange={(e) => setInvitationCode(e.target.value)}
               className="w-full h-8 sm:h-10 text-xs sm:text-sm"
             />
             <Input
               type="date"
-              placeholder="Please select the registration time"
+              placeholder="Select the registration time"
               value={registrationTime}
               onChange={(e) => setRegistrationTime(e.target.value)}
               className="w-full h-8 sm:h-10 text-xs sm:text-sm"
             />
             <Input
-              placeholder="Please enter the login IP"
+              placeholder="Enter the login IP"
               value={loginIp}
               onChange={(e) => setLoginIp(e.target.value)}
               className="w-full h-8 sm:h-10 text-xs sm:text-sm"

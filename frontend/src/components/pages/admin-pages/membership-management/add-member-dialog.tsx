@@ -70,7 +70,7 @@ export function AddMemberDialog({ open, onOpenChange }: AddMemberDialogProps) {
             </Label>
             <Input
               id="username"
-              placeholder="Please enter your username"
+              placeholder="Enter your username"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
               className="col-span-3"
@@ -83,7 +83,7 @@ export function AddMemberDialog({ open, onOpenChange }: AddMemberDialogProps) {
             </Label>
             <Input
               id="phone-number"
-              placeholder="Please enter your mobile number"
+              placeholder="Enter your mobile number"
               value={phoneNumber}
               onChange={(e) => setPhoneNumber(e.target.value)}
               className="col-span-3"
@@ -97,7 +97,7 @@ export function AddMemberDialog({ open, onOpenChange }: AddMemberDialogProps) {
             <Input
               id="login-password"
               type="password"
-              placeholder="Please enter your login password"
+              placeholder="Enter your login password"
               value={loginPassword}
               onChange={(e) => setLoginPassword(e.target.value)}
               className="col-span-3"
@@ -110,7 +110,7 @@ export function AddMemberDialog({ open, onOpenChange }: AddMemberDialogProps) {
             </Label>
             <Input
               id="superior-id"
-              placeholder="Please enter your superior ID"
+              placeholder="Enter your superior ID"
               value={superiorId}
               onChange={(e) => setSuperiorId(e.target.value)}
               className="col-span-3"
