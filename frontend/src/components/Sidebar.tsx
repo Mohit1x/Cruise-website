@@ -12,7 +12,7 @@ import {
   SidebarMenuItem,
   useSidebar,
 } from "@/components/ui/custom-sidebar";
-import { ChevronDown, ChevronLeft, ChevronRight, Menu } from "lucide-react";
+import { ChevronDown, ChevronLeft, ChevronRight } from "lucide-react";
 import { getSidebarMenuItems } from "@/lib/sidebar-configs";
 import { Button } from "./ui/button";
 
@@ -60,9 +60,7 @@ function MenuItem({ item, level = 0 }: { item: MenuItem; level?: number }) {
           >
             <div className="flex items-center space-x-3 w-full">
               <item.icon className="h-4 w-4 sm:h-5 sm:w-10" />
-              {(isOpen) && (
-                <span className="text-sm">{item.title}</span>
-              )}
+              {isOpen && <span className="text-sm">{item.title}</span>}
             </div>
 
             {/* Right side: chevron */}
@@ -91,28 +89,30 @@ function MenuItem({ item, level = 0 }: { item: MenuItem; level?: number }) {
 }
 
 export default function AppSidebar() {
-  const { isOpen,toggle, isMobile } = useSidebar();
+  const { isOpen, toggle, isMobile } = useSidebar();
   const location = useLocation();
   const currentPath = location.pathname;
   const menuItems = getSidebarMenuItems(currentPath);
 
   return (
     <Sidebar
-      className={`collapsible-icon ${isOpen ? "w-64" : isMobile ? "w-14" : "w-fit"}`}
+      className={`collapsible-icon ${
+        isOpen ? "w-64" : isMobile ? "w-14" : "w-fit"
+      }`}
     >
       <SidebarContent>
         <SidebarGroup>
           <div className="flex items-center justify-between p-2">
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={() => toggle()}
-            >
+            <Button variant="ghost" size="icon" onClick={() => toggle()}>
               {isOpen ? <ChevronLeft /> : <ChevronRight />}
             </Button>
           </div>
           <SidebarGroupContent>
-            <SidebarMenu className={`flex flex-col ${!isOpen ? "items-center" : "items-start"} justify-between`}>
+            <SidebarMenu
+              className={`flex flex-col ${
+                !isOpen ? "items-center" : "items-start"
+              } justify-between`}
+            >
               {menuItems.map((item, index) => (
                 <MenuItem key={index} item={item} />
               ))}
