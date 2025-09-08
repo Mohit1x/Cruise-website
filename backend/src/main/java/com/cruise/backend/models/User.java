@@ -54,6 +54,7 @@ public class User extends Auditable implements UserDetails {
     @Column(name = "role", nullable = false, length = 10)
     private UserRole role;
 
+    @NotBlank
     @Column(name = "invitation_code", unique = true)
     private String invitationCode;
 
@@ -64,11 +65,12 @@ public class User extends Auditable implements UserDetails {
     @Column(name = "usage_status", nullable = false)
     private UsageStatus usageStatus;
 
-    @OneToOne(mappedBy = "user",cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToOne(mappedBy = "user",cascade = CascadeType.ALL)
     @JsonManagedReference
     private BankDetails bankDetails;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+//    @Transient
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
     @JoinColumn(name = "membership_level_id", nullable = false)
     private MembershipLevel membershipLevel;
 
@@ -82,11 +84,18 @@ public class User extends Auditable implements UserDetails {
         return this.email;
     }
 
+    private String generateInvitationCode() {
+        return UUID.randomUUID().toString()
+                .replace("-", "")
+                .substring(0, 6)   // 6 characters like 2BMY5P
+                .toUpperCase();
+    }
+
     @PrePersist
     private void prePersist(){
         if(this.id == null){
             this.id = UUID.randomUUID().toString();
-            this.membershipLevel.setId(this.id);
         }
+        this.invitationCode = generateInvitationCode();
     }
 }

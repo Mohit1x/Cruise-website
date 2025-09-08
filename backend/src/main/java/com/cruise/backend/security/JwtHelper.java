@@ -38,7 +38,7 @@ public class JwtHelper {
                 .setSubject(user.getUsername())
                 .claim("role", user.getRole().name())
                 .setIssuedAt(new Date(System.currentTimeMillis()))
-                .setExpiration(new Date(JWT_TOKEN_VALIDITY)) // 1 hr expiry
+                .setExpiration(new Date(System.currentTimeMillis() + JWT_TOKEN_VALIDITY)) // 1 hr expiry
                 .signWith(key, SignatureAlgorithm.HS256)
                 .compact();
     }

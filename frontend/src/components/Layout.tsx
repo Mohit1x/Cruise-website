@@ -2,7 +2,7 @@
 import { Outlet } from "react-router-dom";
 import Header from "./Header";
 import { Footer } from "./Footer";
-import { MobileFooter } from "./MobileFooter";
+// import { MobileFooter } from "./MobileFooter";
 
 const Layout: React.FC = () => {
   return (
@@ -12,7 +12,7 @@ const Layout: React.FC = () => {
         <Outlet />
       </main>
       <Footer />
-      <MobileFooter />
+      {/* <MobileFooter /> */}
     </div>
   );
 };

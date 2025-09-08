@@ -44,6 +44,7 @@ public class AuthController {
         this.doAuthenticate(request.getEmail(), request.getPassword());
         User userDetails = (User) userServ.loadUserByUsername(request.getEmail());
         String token = userServ.checkAndRenewToken(userDetails);
+        userServ.incrementLoginCount(userDetails);
         JwtResponse response = JwtResponse.builder()
                 .jwtToken(token)
                 .name(userDetails.getUsername())

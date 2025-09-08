@@ -12,7 +12,7 @@ const Header = () => {
 
   return (
   <>
-    <div className={`${currentLocation == "/account" ? 'hidden':'block'}`}>
+    <div className={`${currentLocation == "/account" ? 'hidden':'block'} absolute inset-0 z-50`}>
       <div className="flex flex-col px-2 md:px-0">
         <div className="">
           <div className="flex items-center justify-between h-20 max-w-7xl mx-auto">

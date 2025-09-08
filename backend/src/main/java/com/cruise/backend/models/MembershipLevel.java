@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.UuidGenerator;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.UUID;
 
@@ -15,7 +16,7 @@ import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "membership_levels")
-public class MembershipLevel {
+public class MembershipLevel extends Auditable implements Serializable {
 
     @Id
     @GeneratedValue
@@ -23,7 +24,7 @@ public class MembershipLevel {
     @Column(name = "id", nullable = false, updatable = false, length = 36)
     private String id;
 
-    @Column(unique = true, nullable = false)
+    @Column(nullable = false)
     private String name; // e.g., "VIP0", "VIP1"
 
     @Column(nullable = false, precision = 10, scale = 4)

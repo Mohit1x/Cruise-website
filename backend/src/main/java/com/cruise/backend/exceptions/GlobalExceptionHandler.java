@@ -18,7 +18,7 @@ import java.util.Map;
 @RequiredArgsConstructor
 public class GlobalExceptionHandler {
 
-    private ResponseEntity<Object> buildResponse(String message, Map<String, Object> data, HttpStatus status) {
+    public ResponseEntity<Object> buildResponse(String message, Map<String, Object> data, HttpStatus status) {
         Map<String, Object> body = new HashMap<>();
         body.put("timestamp", LocalDateTime.now());
         body.put("status", status.value());

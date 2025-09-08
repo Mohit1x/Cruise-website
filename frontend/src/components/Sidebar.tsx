@@ -12,7 +12,7 @@ import {
   SidebarMenuItem,
   useSidebar,
 } from "@/components/ui/custom-sidebar";
-import { ChevronDown, ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronDown, ChevronLeft, ChevronRight, Menu } from "lucide-react";
 import { getSidebarMenuItems } from "@/lib/sidebar-configs";
 import { Button } from "./ui/button";
 
@@ -108,11 +108,7 @@ export default function AppSidebar() {
             </Button>
           </div>
           <SidebarGroupContent>
-            <SidebarMenu
-              className={`flex flex-col ${
-                !isOpen ? "items-center" : "items-start"
-              } justify-between`}
-            >
+            <SidebarMenu>
               {menuItems.map((item, index) => (
                 <MenuItem key={index} item={item} />
               ))}
