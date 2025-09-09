@@ -1,14 +1,13 @@
-@import url('https://fonts.googleapis.com/css2?family=Archivo&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternatesdisplay=swap');
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Gotu&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Bangers&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Archivo&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat+Alternatesdisplay=swap");
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Gotu&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Bangers&display=swap");
 
 @import "tailwindcss";
 @import "tw-animate-css";
-
 
 @custom-variant dark (&:is(.dark *));
 
@@ -235,11 +234,56 @@ body {
 .google_translate_element {
   border: 1px solid black;
 }
-.mask-ticket{
-  -webkit-mask-repeat: no-repeat;
+
+@media screen and (max-width: 600px) {
+  .phone-none {
+    display: none;
+  }
+}
+
+
+/* Mobile (default) */
+.mask-ticket {
+  -webkit-mask-image: url("/res-v.png");
+  -webkit-mask-position: 50% 0px;
   -webkit-mask-size: 100% 100%;
-  -webkit-mask-position: "center";
+  -webkit-mask-repeat: no-repeat;
+
+  mask-image: url("/res-v.png");
+  mask-position: 50% 0px;
+  mask-size: 100% 100%;
   mask-repeat: no-repeat;
-  mask-size: 150% 105%;
-  mask-position: 30% 25px;
+}
+
+/* Tablet and above */
+@media (min-width: 640px) {
+  .mask-ticket {
+    -webkit-mask-image: url("/v.png");
+    -webkit-mask-position: 50% 25px;
+    -webkit-mask-size: 120% 100%;
+    -webkit-mask-repeat: no-repeat;
+
+    mask-image: url("/v.png");
+    mask-position: 50% 25px;
+    mask-size: 100% 100%;
+    mask-repeat: no-repeat;
+  }
+}
+
+.swiper-button-next {
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+  width: 40px !important;
+  height: 40px !important;
+  top: 45% !important;
+}
+
+.swiper-button-prev { 
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+  width: 40px !important;
+  height: 40px !important;
+  top: 47% !important;  
 }

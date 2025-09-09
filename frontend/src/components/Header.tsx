@@ -15,7 +15,7 @@ const Header = () => {
     <div className={`${currentLocation == "/account" ? 'hidden':'block'} absolute inset-0 z-30`}>
       <div className="flex flex-col px-2 md:px-0">
         <div className="">
-          <div className="flex items-center justify-between h-20 max-w-7xl mx-auto">
+          <div className="flex items-center justify-between h-12 md:h-20 max-w-7xl mx-auto">
             <Link to={"/"}><div><img src="/logo.png" className="w-20 md:w-28"/></div></Link>
             <div className="flex items-center gap-2 md:gap-5">
             <Link to={"/admin/dashboard"}><h1>Admin</h1></Link>

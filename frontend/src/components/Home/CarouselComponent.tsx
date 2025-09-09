@@ -1,79 +1,162 @@
-type CarouselComponentProps = {
-  tag: string;
-  data: {
-    id: number;
-    name: string;
-    image: string;
-    reviews: number;
-    price: number;
-  }[];
-};
+"use client";
 
-import { Card, CardContent } from "@/components/ui/card";
 import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
+  Navigation,
+  Pagination,
+  Autoplay,
+  A11y,
+  Scrollbar,
+} from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
 import { Star } from "lucide-react";
-import { Link } from "react-router";
+import { motion } from "framer-motion";
+import { Button } from "../ui/button";
 
-const CarouselComponent = ({ tag, data }: CarouselComponentProps) => {
+interface CruiseCard {
+  id: number;
+  title: string;
+  description: string;
+  image: string;
+  price: string;
+  tags: string[];
+}
+
+const cruiseData: CruiseCard[] = [
+  {
+    id: 1,
+    title: "Best Antarctic Cruises",
+    description:
+      "A Once-in-a-lifetime adventure for the brave who want to explore the white continent. Depart from Us...",
+    image: "/antarctic-landscape-with-icebergs-and-penguins.jpg",
+    price: "$8500",
+    tags: ["Adventure", "Polar Regions"],
+  },
+  {
+    id: 2,
+    title: "Top Galápagos Cruises",
+    description:
+      "It's a journey to see the world through the eyes of a naturalist, coming face-to-face with its am...",
+    image: "/galapagos-islands-with-cruise-ship-and-wildlife.jpg",
+    price: "$7200",
+    tags: ["Adventure", "Nature"],
+  },
+  {
+    id: 3,
+    title: "Last-Minute Deals",
+    description:
+      "We offer a selection of cruise deals to visit cities that are at the top of the bucket list. Last-minute cruis...",
+    image: "/modern-city-skyline-with-cruise-ship-in-harbor.jpg",
+    price: "$420",
+    tags: ["Vacation", "Cities"],
+  },
+  {
+    id: 4,
+    title: "Mediterranean Escapes",
+    description:
+      "Discover ancient civilizations and stunning coastlines across the Mediterranean Sea with luxury amenities...",
+    image: "/mediterranean-coastal-town-with-blue-waters.jpg",
+    price: "$3200",
+    tags: ["Culture", "Luxury"],
+  },
+];
+
+export default function CarouselComponent() {
   return (
-    <div className="flex flex-col gap-5">
-      <h1 className="text-2xl font-bold">{tag}</h1>
-      <Carousel
-        opts={{
-          align: "start",
+    <div className="w-full max-w-7xl mx-auto space-y-4 px-4 md:px-6">
+      <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-foreground font-archivo">
+        Plan Your Journey
+      </h2>
+
+      <Swiper
+        modules={[Navigation, Autoplay, A11y]}
+        spaceBetween={16}
+        slidesPerView={3}
+        navigation={true}
+        loop={true}
+        autoplay={{ delay: 5000, disableOnInteraction: false }}
+        breakpoints={{
+          0: { slidesPerView: 1 }, // mobile
+          640: { slidesPerView: 2 }, // tablets
+          1024: { slidesPerView: 3 }, // laptops
+          1280: { slidesPerView: 4 }, // desktops
         }}
-        className="w-full"
+        className="cruise-swiper relative"
       >
-        <CarouselContent>
-          {data.map((item) => (
-            <CarouselItem
-              key={item.id}
-              className="basis-[85%] sm:basis-1/2 md:basis-1/3 lg:basis-1/4"
-            >
-              <Link to={`/find-a-cruise/${item.id}`}>
-                <div className="">
-                  <Card className="overflow-hidden rounded-md shadow-md group cursor-pointer">
-                    <img
-                      src={item.image}
-                      alt={item.name}
-                      className="w-full h-[200px] object-cover transition duration-300 group-hover:scale-125"
-                    />
-                    <CardContent className="p-2 space-y-1">
-                      <h2 className="text-lg font-semibold">{item.name}</h2>
-                      <div className="flex items-center text-sm text-gray-600 gap-1">
-                        {[...Array(5)].map((_, i) => (
-                          <Star
-                            key={i}
-                            size={14}
-                            fill="orange"
-                            className="text-orange-400"
-                          />
-                        ))}
-                        <span className="ml-2">
-                          {item.reviews.toLocaleString()} Reviews
-                        </span>
-                      </div>
-                      <p className="text-base font-bold text-black mt-1">
-                        From A${item.price.toLocaleString()}
-                      </p>
-                    </CardContent>
-                  </Card>
+        {cruiseData.map((cruise) => (
+          <SwiperSlide key={cruise.id}>
+            <Card className="relative overflow-hidden h-full hover:shadow-lg transition-shadow duration-300">
+              <div className="relative">
+                <img
+                  src={cruise.image || "/placeholder.svg"}
+                  alt={cruise.title}
+                  className="w-full h-56 sm:h-64 md:h-72 lg:h-64 object-cover"
+                />
+
+                {/* Rating Badge */}
+                <div className="absolute top-3 right-3">
+                  <Badge
+                    variant="secondary"
+                    className="flex items-center gap-1 text-xs px-2 py-1"
+                  >
+                    <Star size={14} fill="orange" className="text-orange-400" />
+                    5.5
+                  </Badge>
                 </div>
-              </Link>
-            </CarouselItem>
-          ))}
-        </CarouselContent>
-        <CarouselPrevious className="hidden md:block"/>
-        <CarouselNext className="hidden md:block"/>
-      </Carousel>
+              </div>
+
+              <CardContent className="p-4">
+                <h3 className="font-semibold text-sky-600 text-lg mb-2">
+                  {cruise.title}
+                </h3>
+                <p className="text-muted-foreground text-sm mb-3 line-clamp-2">
+                  {cruise.description}
+                </p>
+
+                {/* Tags */}
+                <div className="flex flex-wrap gap-2 mb-3">
+                  {cruise.tags.map((tag, index) => (
+                    <Badge
+                      key={index}
+                      variant="secondary"
+                      className="text-xs px-2 py-1"
+                    >
+                      {tag}
+                    </Badge>
+                  ))}
+                </div>
+
+                {/* Price & Button */}
+                <div className="flex items-center justify-between">
+                  <div>
+                    <p className="text-xs text-muted-foreground">Starts from</p>
+                    <div className="flex items-baseline gap-2">
+                      <p className="text-sm md:text-base font-bold text-amber-400 line-through">
+                        {"$99999"}
+                      </p>
+                      <p className="text-lg md:text-xl font-bold text-sky-600">
+                        {cruise.price}
+                      </p>
+                    </div>
+                  </div>
+                  <motion.div
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    <Button className="bg-zinc-100 hover:bg-zinc-100 text-indigo-500/70 text-xs md:text-sm px-3 py-2 md:px-4 md:py-2">
+                      Book Now
+                    </Button>
+                  </motion.div>
+                </div>
+              </CardContent>
+            </Card>
+          </SwiperSlide>
+        ))}
+      </Swiper>
     </div>
   );
-};
-
-export default CarouselComponent;
+}

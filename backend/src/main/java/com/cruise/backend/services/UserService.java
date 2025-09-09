@@ -1,5 +1,6 @@
 package com.cruise.backend.services;
 
+import com.cruise.backend.constants.UsageStatus;
 import com.cruise.backend.constants.UserRole;
 import com.cruise.backend.exceptions.NotFoundException;
 import com.cruise.backend.exceptions.UserAlreadyExistsException;
@@ -59,6 +60,7 @@ public class UserService implements UserDetailsService {
             throw new UserAlreadyExistsException("User with email " + user.getEmail() + " already exists");
         }
         user.setPassword(passwordEncoder.encode(user.getPassword()));
+        user.setUsageStatus(UsageStatus.ACTIVE);
         user.setMembershipLevel(membershipServ.findByName("VIP0"));
         return userRepo.save(user);
     }

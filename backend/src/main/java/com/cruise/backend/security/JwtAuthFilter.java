@@ -1,5 +1,7 @@
 package com.cruise.backend.security;
 
+import com.cruise.backend.constants.UsageStatus;
+import com.cruise.backend.repositories.UserRepo;
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.MalformedJwtException;
 import io.jsonwebtoken.security.SignatureException;
@@ -28,6 +30,7 @@ public class JwtAuthFilter extends OncePerRequestFilter {
     private final JwtHelper jwtHelper;
     private final UserDetailsService userDetailsService;
     private final HandlerExceptionResolver handlerExceptionResolver;
+    private final UserRepo userRepo;
 
 
     @Override
@@ -62,6 +65,11 @@ public class JwtAuthFilter extends OncePerRequestFilter {
             filterChain.doFilter(request, response);
 
         }catch (ExpiredJwtException e) {
+            String userMail = e.getClaims().getSubject();
+            userRepo.findByEmail(userMail).ifPresent(user->{
+                user.setUsageStatus(UsageStatus.INACTIVE);
+                userRepo.save(user);
+            });
             response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
             response.getWriter().write("Token has expired: " + e.getMessage());
 
