@@ -6,7 +6,7 @@ import { Footer } from "./Footer";
 
 const Layout: React.FC = () => {
   return (
-    <div className="relative min-h-screen pb-16">
+    <div className="relative min-h-screen">
       <Header />
       <main>
         <Outlet />
