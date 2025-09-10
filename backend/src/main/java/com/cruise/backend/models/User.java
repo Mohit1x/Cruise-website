@@ -68,7 +68,7 @@ public class User extends Auditable implements UserDetails {
 
     @OneToOne(mappedBy = "user",cascade = CascadeType.ALL)
     @JsonManagedReference
-    private BankDetails bankDetails;
+    private BankDetails bankDetails; // Bidirectional
 
 //    @Transient
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)

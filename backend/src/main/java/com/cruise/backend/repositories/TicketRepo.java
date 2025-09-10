@@ -8,5 +8,4 @@ import java.util.List;
 @Repository
 public interface TicketRepo extends BaseRepo<Ticket,String>{
 
-    List<Ticket> findByUserId(String userId);
 }

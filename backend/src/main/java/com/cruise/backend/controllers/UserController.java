@@ -1,6 +1,6 @@
 package com.cruise.backend.controllers;
 
-import com.cruise.backend.exceptions.GlobalExceptionHandler;
+import com.cruise.backend.helper.ResponseBuilder;
 import com.cruise.backend.models.User;
 import com.cruise.backend.services.UserService;
 import lombok.RequiredArgsConstructor;
@@ -20,7 +20,7 @@ import java.util.Map;
 public class UserController {
 
     private final UserService userServ;
-    private final GlobalExceptionHandler handler;
+    private final ResponseBuilder handler;
 
     @GetMapping(value = "/all")
     public ResponseEntity<Object> getAll() {

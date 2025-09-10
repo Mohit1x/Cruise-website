@@ -65,20 +65,31 @@ public class UserService implements UserDetailsService {
         return userRepo.save(user);
     }
 
-    public String checkAndRenewToken(User user){
-        String token = user.getNumberOfLogins() == 0 ?
-                this.helper.generateToken(user) : user.getToken();
+    public String checkAndRenewToken(User user) {
+        String token;
 
-        try{
-            this.helper.isTokenValid(token,user);
-        }catch(ExpiredJwtException e){
+        if (user.getNumberOfLogins() == 0 || user.getToken() == null || user.getToken().isBlank()) {
+            // First login OR no token saved yet
+            token = this.helper.generateToken(user);
+            user.setToken(token);
+            userRepo.save(user);
+            return token;
+        }
+
+        token = user.getToken();
+
+        try {
+            this.helper.isTokenValid(token, user);
+        } catch (ExpiredJwtException e) {
             String newToken = this.helper.generateToken(user);
             user.setToken(newToken);
             userRepo.save(user);
             return newToken;
         }
+
         return token;
     }
+
 
     public void incrementLoginCount(User user) {
         int currentCount = user.getNumberOfLogins() != null ? user.getNumberOfLogins() : 0;
