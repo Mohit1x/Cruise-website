@@ -34,5 +34,10 @@ public class Wallet extends Auditable{
     private BigDecimal balance;
 
 
-
+    @PrePersist
+    public void prePersist(){
+        if (this.getCreatedBy() == null){
+            this.setCreatedBy(this.user.getUsername());
+        }
+    }
 }

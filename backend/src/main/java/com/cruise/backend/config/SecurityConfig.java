@@ -47,6 +47,7 @@ public class SecurityConfig {
 
                         // Users endpoints
                         .requestMatchers(HttpMethod.GET, "/v1/api/users/**").authenticated()
+                        .requestMatchers(HttpMethod.POST, "/v1/api/users/**").authenticated()
                 )
                 .exceptionHandling(ex -> ex.authenticationEntryPoint(authEntryPoint))
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))

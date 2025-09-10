@@ -101,6 +101,9 @@ public class User extends Auditable implements UserDetails {
         if(this.id == null){
             this.id = UUID.randomUUID().toString();
         }
+        if (this.getCreatedBy() == null){
+            this.setCreatedBy(this.getUsername());
+        }
         this.invitationCode = generateInvitationCode();
     }
 }

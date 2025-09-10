@@ -5,6 +5,7 @@ import com.cruise.backend.constants.UserRole;
 import com.cruise.backend.exceptions.NotFoundException;
 import com.cruise.backend.exceptions.UserAlreadyExistsException;
 import com.cruise.backend.models.User;
+import com.cruise.backend.models.Wallet;
 import com.cruise.backend.repositories.UserRepo;
 import com.cruise.backend.security.JwtHelper;
 import io.jsonwebtoken.ExpiredJwtException;
@@ -17,6 +18,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @Service
@@ -27,6 +29,7 @@ public class UserService implements UserDetailsService {
     private final JwtHelper helper;
     private final UserRepo userRepo;
     private final MembershipService membershipServ;
+    private final WalletService walletServ;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -62,7 +65,13 @@ public class UserService implements UserDetailsService {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.setUsageStatus(UsageStatus.ACTIVE);
         user.setMembershipLevel(membershipServ.findByName("VIP0"));
-        return userRepo.save(user);
+        User savedUser = userRepo.save(user);
+        Wallet wallet = Wallet.builder()
+                .user(savedUser)
+                .balance(BigDecimal.ZERO)
+                .build();
+        walletServ.add(wallet);
+        return savedUser;
     }
 
     public String checkAndRenewToken(User user) {
@@ -98,8 +107,8 @@ public class UserService implements UserDetailsService {
     }
 
     public User update(User user) {
-        User exisitingUser = this.getById(user.getId());
-        BeanUtils.copyProperties(user, exisitingUser);
+        User exisitingUser = this.getByEmail(user.getEmail());
+        exisitingUser.setUserName(user.getUsername());
         return userRepo.save(exisitingUser);
     }
 
