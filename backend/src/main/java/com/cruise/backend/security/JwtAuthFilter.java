@@ -32,7 +32,6 @@ public class JwtAuthFilter extends OncePerRequestFilter {
 
     private final JwtHelper jwtHelper;
     private final UserDetailsService userDetailsService;
-    private final HandlerExceptionResolver handlerExceptionResolver;
     private final ResponseBuilder responseBuilder;
     private final UserRepo userRepo;
 
