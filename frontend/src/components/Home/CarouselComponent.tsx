@@ -2,10 +2,8 @@
 
 import {
   Navigation,
-  Pagination,
   Autoplay,
   A11y,
-  Scrollbar,
 } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Card, CardContent } from "@/components/ui/card";
@@ -63,6 +61,15 @@ const cruiseData: CruiseCard[] = [
     price: "$3200",
     tags: ["Culture", "Luxury"],
   },
+   {
+    id: 5,
+    title: "Best Antarctic Cruises",
+    description:
+      "A Once-in-a-lifetime adventure for the brave who want to explore the white continent. Depart from Us...",
+    image: "/antarctic-landscape-with-icebergs-and-penguins.jpg",
+    price: "$8500",
+    tags: ["Adventure", "Polar Regions"],
+  },
 ];
 
 export default function CarouselComponent() {
@@ -74,9 +81,9 @@ export default function CarouselComponent() {
 
       <Swiper
         modules={[Navigation, Autoplay, A11y]}
+        navigation={true}
         spaceBetween={16}
         slidesPerView={3}
-        navigation={true}
         loop={true}
         autoplay={{ delay: 5000, disableOnInteraction: false }}
         breakpoints={{

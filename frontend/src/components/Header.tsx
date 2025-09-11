@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Crown, UserRound } from "lucide-react";
 import { SpinWheelModal } from "./SpinWheelModal";
 import { Link, useLocation } from "react-router";
 import { CreditScoreModal } from "./Home/CreditScoreModel";
@@ -13,16 +14,19 @@ const Header = () => {
   return (
   <>
     <div className={`${currentLocation == "/account" ? 'hidden':'block'} absolute inset-0 z-30`}>
-      <div className="flex flex-col px-2 md:px-0">
+      <div className="flex flex-col px-4 md:px-0">
         <div className="">
           <div className="flex items-center justify-between h-12 md:h-20 max-w-7xl mx-auto">
             <Link to={"/"}><div><img src="/logo.png" className="w-20 md:w-28"/></div></Link>
             <div className="flex items-center gap-2 md:gap-5">
             <Link to={"/admin/dashboard"}><h1>Admin</h1></Link>
-            <img src="/spin-icon.png" className="h-8 w-8 md:h-12 md:w-12" onClick={()=>setIsModalOpen(true)}/>
-            <img src="/shield-icon.png" className="h-8 w-8 md:h-12 md:w-12" onClick={()=>setIsCreditScoreOpen(true)}/>
-            <img src="/message-icon.png" className="h-8 w-8 md:h-12 md:w-12"/>
-            <Link to={"/account"}><img src="/avatar-icon.png" className="h-10 w-10 md:h-12 md:w-12"/></Link>
+            <img src="/spin-icon.png" className="h-6 w-6 md:h-8 md:w-8" onClick={()=>setIsModalOpen(true)}/>
+            <div>
+              <Crown className="h-6 w-6 md:h-8 md:w-8" onClick={()=>setIsCreditScoreOpen(true)} />
+            </div>
+            <div>
+              <Link to={"/account"}><UserRound className="h-6 w-6 md:h-8 md:w-8" /></Link>
+            </div>
             </div>
           </div>
         </div>

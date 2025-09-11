@@ -241,7 +241,6 @@ body {
   }
 }
 
-
 /* Mobile (default) */
 .mask-ticket {
   -webkit-mask-image: url("/res-v.png");
@@ -258,32 +257,60 @@ body {
 /* Tablet and above */
 @media (min-width: 640px) {
   .mask-ticket {
-    -webkit-mask-image: url("/v.png");
+    -webkit-mask-image: url("/bg-msk.png");
     -webkit-mask-position: 50% 25px;
     -webkit-mask-size: 120% 100%;
     -webkit-mask-repeat: no-repeat;
 
-    mask-image: url("/v.png");
+    mask-image: url("/bg-msk.png");
     mask-position: 50% 25px;
     mask-size: 100% 100%;
     mask-repeat: no-repeat;
   }
 }
 
-.swiper-button-next {
-  background-size: contain !important;
-  background-repeat: no-repeat !important;
-  background-position: center !important;
+/* Shared button styles */
+.swiper-button-next,
+.swiper-button-prev {
+  background-color: white;
+  border-radius: 50%;
   width: 40px !important;
   height: 40px !important;
-  top: 45% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  color: #0ea5e9; /* sky-500 */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  transition: all 0.25s ease-in-out;
+  opacity: 0.9;
 }
 
-.swiper-button-prev { 
-  background-size: contain !important;
-  background-repeat: no-repeat !important;
-  background-position: center !important;
-  width: 40px !important;
-  height: 40px !important;
-  top: 47% !important;  
+/* Positioning */
+.swiper-button-prev {
+  left: 12px !important;
+}
+.swiper-button-next {
+  right: 12px !important;
+}
+
+/* Hover effect */
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+  background-color: #0ea5e9; /* sky-500 */
+  color: white; /* invert icon color */
+  transform: scale(1.15) translateY(-2px); /* lift effect */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
+  opacity: 1;
+}
+
+/* Active click feedback */
+.swiper-button-next:active,
+.swiper-button-prev:active {
+  transform: scale(0.95); /* quick shrink */
+}
+
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  font-size: 18px !important;
+  font-weight: bold;
 }

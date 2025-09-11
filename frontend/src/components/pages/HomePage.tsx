@@ -14,7 +14,7 @@ const HomePage = () => {
         <div className="w-full md:w-7xl mx-auto px-2 md:px-0 z-30">
           <CarouselComponent />
         </div>
-        <div className="w-full md:w-7xl mx-auto px-2 md:px-0 ">
+        <div className="w-full md:w-7xl mx-auto px-2 md:px-0 z-30">
           <OtherPorts data={otherPortsData} />
         </div>
       </div>
