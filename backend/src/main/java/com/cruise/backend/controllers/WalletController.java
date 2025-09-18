@@ -1,5 +1,6 @@
 package com.cruise.backend.controllers;
 
+import com.cruise.backend.dtos.Transaction;
 import com.cruise.backend.helper.ResponseBuilder;
 import com.cruise.backend.models.Wallet;
 import com.cruise.backend.services.WalletService;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.security.Principal;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -31,6 +33,11 @@ public class WalletController {
         data.put("wallet",created);
         log.info("✔ Created User Wallet Successfully");
         return handler.buildResponse("Created User Wallet Successfully",data, HttpStatus.CREATED);
+    }
+
+    @PostMapping(value = "/transaction")
+    public ResponseEntity<Object> transaction(@RequestBody Transaction transaction, Principal principal){
+        
     }
 
 

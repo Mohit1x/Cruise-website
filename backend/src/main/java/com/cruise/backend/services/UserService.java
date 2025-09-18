@@ -4,6 +4,7 @@ import com.cruise.backend.constants.UsageStatus;
 import com.cruise.backend.constants.UserRole;
 import com.cruise.backend.exceptions.NotFoundException;
 import com.cruise.backend.exceptions.UserAlreadyExistsException;
+import com.cruise.backend.models.Ticket;
 import com.cruise.backend.models.User;
 import com.cruise.backend.models.Wallet;
 import com.cruise.backend.repositories.UserRepo;
@@ -11,7 +12,6 @@ import com.cruise.backend.security.JwtHelper;
 import io.jsonwebtoken.ExpiredJwtException;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.BeanUtils;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -48,6 +48,10 @@ public class UserService implements UserDetailsService {
     public User getByEmail(String email) {
         return userRepo.findByEmail(email)
                 .orElseThrow(() -> new RuntimeException("User Not found By Email..."));
+    }
+
+    public List<Ticket> getTickets(String id){
+        return userRepo.findTicketsByUserId(id);
     }
 
     @Transactional
@@ -98,7 +102,6 @@ public class UserService implements UserDetailsService {
 
         return token;
     }
-
 
     public void incrementLoginCount(User user) {
         int currentCount = user.getNumberOfLogins() != null ? user.getNumberOfLogins() : 0;

@@ -1,14 +1,17 @@
 package com.cruise.backend.controllers;
 
 import com.cruise.backend.helper.ResponseBuilder;
+import com.cruise.backend.models.Ticket;
 import com.cruise.backend.models.User;
 import com.cruise.backend.services.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -19,6 +22,7 @@ import java.util.Map;
 @RequestMapping(value = "/v1/api/users")
 public class UserController {
 
+    private final UserDetailsService userDetailsServ;
     private final UserService userServ;
     private final ResponseBuilder handler;
 
@@ -38,6 +42,16 @@ public class UserController {
         data.put("user",user);
         log.info("✔ Retrieve User By ID Successfully");
         return handler.buildResponse("Retrieve User By ID Successfully",data,HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/tickets")
+    public ResponseEntity<Object> getTicketsById(Principal principal){
+        User currentUser = (User) userDetailsServ.loadUserByUsername(principal.getName());
+        List<Ticket> tickets = userServ.getTickets(currentUser.getId());
+        Map<String,Object> data = new HashMap<>();
+        data.put("userTickets",tickets);
+        log.info("✔ Retrieve User Tickets By ID Successfully");
+        return handler.buildResponse("Retrieve User Tickets By ID Successfully",data,HttpStatus.OK);
     }
 
     @GetMapping(value = "/email/{email}")

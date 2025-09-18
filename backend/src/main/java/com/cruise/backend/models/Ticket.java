@@ -24,5 +24,4 @@ public class Ticket extends Auditable {
     @Column(name = "rating")
     private int rating;
 
-
 }

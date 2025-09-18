@@ -79,6 +79,9 @@ public class User extends Auditable implements UserDetails {
     @JoinColumn(name = "user_id",referencedColumnName = "id")
     private List<Ticket> tickets = new ArrayList<>();
 
+    @Column(name = "ticket_count")
+    private int ticketCount = 0;
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of(new SimpleGrantedAuthority(role.name()));
