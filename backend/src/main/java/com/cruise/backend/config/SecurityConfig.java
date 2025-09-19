@@ -51,6 +51,9 @@ public class SecurityConfig {
 
                         // Ticket endpoints
                         .requestMatchers(HttpMethod.POST,"/v1/api/tickets/**").authenticated()
+
+                        // Wallet endpoints
+                        .requestMatchers(HttpMethod.POST,"/v1/api/wallets/**").authenticated()
                 )
                 .exceptionHandling(ex -> ex.authenticationEntryPoint(authEntryPoint))
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))

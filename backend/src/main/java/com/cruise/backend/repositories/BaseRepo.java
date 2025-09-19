@@ -12,4 +12,7 @@ public interface BaseRepo<T extends Auditable,ID> extends JpaRepository<T,ID> {
     List<T> findByIsDeletedFalse();
 
     List<T> findByIsDeletedTrue();
+
+    List<T> findByCreatedBy(String userName);
+
 }
