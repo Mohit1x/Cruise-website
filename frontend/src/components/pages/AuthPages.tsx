@@ -5,8 +5,10 @@ import { Input } from "@/components/ui/input";
 import { Formik, Form, Field } from "formik";
 import axios from "axios";
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router";
 
 export const AuthPage = () => {
+  const navigate = useNavigate();
   const [modalType, setModalType] = useState<"login" | "register" | null>(null);
   const [isDialogOpen, setIsDialogOpen] = useState(true);
 
@@ -25,6 +27,7 @@ export const AuthPage = () => {
       console.log(data);
       if (status === 200) {
         localStorage.setItem("token", "Bearer ".concat(data.jwtToken));
+        navigate("/");
       } else {
         throw Error("Retry again");
       }
