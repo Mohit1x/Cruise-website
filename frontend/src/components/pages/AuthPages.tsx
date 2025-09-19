@@ -1,19 +1,62 @@
 import { useState } from "react";
-import {
-  Dialog,
-  DialogContent,
-  DialogTitle,
-} from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { Formik, Form, Field } from "formik";
+import axios from "axios";
+import toast from "react-hot-toast";
 
 export const AuthPage = () => {
   const [modalType, setModalType] = useState<"login" | "register" | null>(null);
-  const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const [isDialogOpen, setIsDialogOpen] = useState(true);
 
   const openModal = (type: "login" | "register") => {
     setModalType(type);
     setIsDialogOpen(true);
+  };
+
+  const handleLogin = async (values: any) => {
+    try {
+      console.log(values);
+      const { data, status } = await axios.post(
+        "http://localhost:8081/v1/api/auth/login",
+        values
+      );
+      console.log(data);
+      if (status === 200) {
+        localStorage.setItem("token", "Bearer ".concat(data.jwtToken));
+      } else {
+        throw Error("Retry again");
+      }
+      toast.success("Login Successful", {
+        position: "bottom-right",
+        duration: 3000,
+      });
+    } catch (error: any) {
+      console.log(error);
+      toast.error(error.getMessage(), {
+        position: "bottom-right",
+        duration: 3000,
+      });
+    }
+  };
+
+  const handleRegister = async (values: any) => {
+    try {
+      console.log(values);
+      const { data } = await axios.post(
+        "http://localhost:8081/v1/api/auth/register",
+        values
+      );
+      console.log(data);
+      toast.success("Registration Successful", {
+        position: "bottom-right",
+        duration: 3000,
+      });
+      setModalType("login");
+    } catch (error: any) {
+      console.log(error);
+    }
   };
 
   return (
@@ -21,10 +64,10 @@ export const AuthPage = () => {
       <div
         style={{
           backgroundImage: `url("/new-auth-bg.png")`,
+          // backgroundImage: `url("/login-bg.png")`,
           backgroundSize: "cover",
-          backgroundPosition: "center center",
         }}
-        className="h-screen w-full md:h-[100vh] md:w-[50%] m-auto flex flex-col items-center text-white relative px-4 py-8"
+        className="h-screen w-full m-auto flex flex-col items-center text-white relative px-4 py-8"
       >
         <div className="text-center mt-10">
           <h1 className="text-4xl font-bold">CruisePaz</h1>
@@ -51,44 +94,87 @@ export const AuthPage = () => {
             </div>
 
             {modalType === "login" ? (
-              <form className="space-y-4">
-                <Input
-                  placeholder="Enter Mobile number"
-                  className="bg-gray-100"
-                />
-                <Input
-                  placeholder="Enter Password"
-                  type="password"
-                  className="bg-gray-100"
-                />
-                <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white">
-                  Login
-                </Button>
-              </form>
+              <Formik
+                initialValues={{ email: "", password: "" }}
+                validationSchema={undefined}
+                onSubmit={handleLogin}
+              >
+                {() => (
+                  <Form className="space-y-4">
+                    <Field
+                      as={Input}
+                      id="email"
+                      name="email"
+                      type="email"
+                      placeholder="Enter your email"
+                      className="bg-gray-100 w-full"
+                    />
+
+                    <Field
+                      as={Input}
+                      id="password"
+                      name="password"
+                      type="password"
+                      placeholder="Enter Password"
+                      className="bg-gray-100"
+                    />
+
+                    <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white">
+                      Login
+                    </Button>
+                  </Form>
+                )}
+              </Formik>
             ) : (
-              <form className="space-y-4">
-                <Input
-                  placeholder="Enter Mobile number"
-                  className="bg-gray-100"
-                />
-                <Input
-                  placeholder="Enter Password"
-                  type="password"
-                  className="bg-gray-100"
-                />
-                <Input
-                  placeholder="Confirm Password"
-                  type="password"
-                  className="bg-gray-100"
-                />
-                <Input
-                  placeholder="Enter Invitation code"
-                  className="bg-gray-100"
-                />
-                <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white">
-                  Register
-                </Button>
-              </form>
+              <Formik
+                initialValues={{
+                  userName: "",
+                  password: "",
+                  email: "",
+                  invitationCode: "",
+                  role: "ROLE_USER",
+                }}
+                validationSchema={undefined}
+                onSubmit={handleRegister}
+              >
+                <Form className="space-y-4">
+                  <Field
+                    as={Input}
+                    id="userName"
+                    name="userName"
+                    type="text"
+                    placeholder="Enter a Username"
+                    className="bg-gray-100"
+                  />
+                  <Field
+                    as={Input}
+                    id="password"
+                    name="password"
+                    type="password"
+                    placeholder="Enter Password"
+                    className="bg-gray-100"
+                  />
+                  <Field
+                    as={Input}
+                    id="email"
+                    name="email"
+                    type="email"
+                    placeholder="Enter your email"
+                    className="bg-gray-100 w-full"
+                  />
+                  <Field
+                    as={Input}
+                    id="invitationCode"
+                    name="invitationCode"
+                    type="text"
+                    placeholder="Enter InvitationCode"
+                    className="bg-gray-100"
+                  />
+                  <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white">
+                    Register
+                  </Button>
+                </Form>
+              </Formik>
             )}
 
             <div className="text-center mt-4 text-sm text-blue-600 font-semibold cursor-pointer">
@@ -105,9 +191,14 @@ export const AuthPage = () => {
           </DialogContent>
         </Dialog>
       </div>
-      <div className="absolute bottom-1 flex justify-center bg-white p-1 rounded text-blue-600 w-fit" onClick={()=>openModal("register")}>
-  <span className="text-blue-600 text-xl cursor-pointer font-semibold">Sign Up</span>
-</div>
+      <div
+        className="absolute bottom-1 flex justify-center bg-white p-1 rounded text-blue-600 w-fit"
+        onClick={() => openModal("register")}
+      >
+        <span className="text-blue-600 text-xl cursor-pointer font-semibold">
+          Sign Up
+        </span>
+      </div>
     </div>
   );
 };

@@ -106,6 +106,7 @@ public class UserService implements UserDetailsService {
     public void incrementLoginCount(User user) {
         int currentCount = user.getNumberOfLogins() != null ? user.getNumberOfLogins() : 0;
         user.setNumberOfLogins(currentCount + 1);
+        user.setUsageStatus(UsageStatus.ACTIVE);
         userRepo.save(user);
     }
 

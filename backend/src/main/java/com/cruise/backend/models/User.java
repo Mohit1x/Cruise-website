@@ -60,11 +60,11 @@ public class User extends Auditable implements UserDetails {
     private String invitationCode;
 
     @Column(name = "number_of_logins", nullable = false)
-    private Integer numberOfLogins;
+    private Integer numberOfLogins = 0;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "usage_status", nullable = false)
-    private UsageStatus usageStatus;
+    private UsageStatus usageStatus = UsageStatus.INACTIVE;
 
     @OneToOne(mappedBy = "user",cascade = CascadeType.ALL)
     @JsonManagedReference
