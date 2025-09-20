@@ -48,7 +48,6 @@ public class MembershipService {
         return memberships;
     }
 
-
     public String delete(String id) {
         MembershipLevel existingMembership = this.findById(id);
         existingMembership.setIsDeleted(true);

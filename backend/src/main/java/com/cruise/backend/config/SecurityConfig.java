@@ -54,6 +54,7 @@ public class SecurityConfig {
 
                         // Wallet endpoints
                         .requestMatchers(HttpMethod.POST,"/v1/api/wallets/**").authenticated()
+                        .requestMatchers(HttpMethod.POST,"/v1/api/wallets/edit/**").hasRole("ADMIN")
                 )
                 .exceptionHandling(ex -> ex.authenticationEntryPoint(authEntryPoint))
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
